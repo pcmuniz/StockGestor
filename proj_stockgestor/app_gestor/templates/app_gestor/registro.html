@@ -1,15 +1,17 @@
 {% extends 'app_gestor/base.html' %}
-{% load static %}
+<head>
+    {% load static %}
+    {% block title %}
+    Registro
+    {% endblock title %}
+</head>
 
-{% block title %}
-Registro
-{% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="background-color: aqua;">
     <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <h2 class="mb-4">Registre-se</h2>
+        <div class="col-6">
+            <h2 class="text-center">Registre-se</h2>
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-3">
