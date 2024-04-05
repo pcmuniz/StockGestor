@@ -1,0 +1,83 @@
+<!-- TODO: chamar bases-->
+{% extends 'app_gestor/base.html' %}
+{% load static %}
+
+{% block title %}
+Home | StockGestor
+{% endblock title %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand me-auto" href="#">
+            <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
+        </a>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2 active" href="{% url 'cadastro_produto' %}">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="#">Fornecedores</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <a href="registro" class="login-button">Login</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% endblock navbar %}
+{% block content %}
+<!-- TODO: estética da listagem-->
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="border border-dark p-3 rounded">
+                    <ul class="list-group text-center">
+                        <a href="{% url 'lista_produtos' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Estoque</button>
+                        </a>
+                        <a href="{% url 'cadastro_produto' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-10">
+                <table class="table table-dark table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CNPJ</th>
+                            <th>Endereço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fornecedor in fornecedores %}
+                        <tr>
+                            <td>{{ fornecedor.nome_empresa }}</td>
+                            <td>{{ fornecedor.cnpj }}</td>
+                            <td>{{ fornecedor.endereco }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

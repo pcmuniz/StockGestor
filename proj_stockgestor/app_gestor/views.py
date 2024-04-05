@@ -23,12 +23,11 @@ def signup(request):
 def logado(request):
     if request.method == "POST":
         form = request.POST
-        fornecedor = Fornecedores(nome_empresa=form["nome_empresa"], cnpj=form["cnpj"], inscricao_estadual=form["ie"]\
-                                , inscricao_municipal=form["im"], endereco=form["endereco"], uf=form["uf"]\
+        fornecedor = Fornecedores(nome_empresa=form["nome_empresa"], cnpj=form["cnpj"], inscricao_estadual=form["ie"]
+                                , inscricao_municipal=form["im"], endereco=form["endereco"], uf=form["uf"]
                                 , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
         fornecedor.save()
        
-
     return render(request, 'app_gestor/base_logado.html')
 
 def cadastro_produto(request):
@@ -43,4 +42,10 @@ def cadastro_produto(request):
 
 def lista_produtos(request):
     produtos = Produtos.objects.all()
+
     return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos})
+
+def lista_fornecedores(request):
+    fornecedores = Fornecedores.objects.all()
+
+    return render(request, 'app_gestor/lista_fornecedores.html', {'fornecedores': fornecedores})
