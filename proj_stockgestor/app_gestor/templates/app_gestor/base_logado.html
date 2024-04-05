@@ -27,10 +27,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" aria-current="page" href="#">Produtos</a>
+                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'cadastro_produto' %}">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" href="#">Fornecedores</a>
+                            <a class="nav-link mx-lg-2 active" href="{% url 'logado' %}">Fornecedores</a>
                         </li>
                         <li class="nav-item">
                     </ul>
@@ -58,13 +58,18 @@
         <div class="container-fluid">
              <div class="row">
                  <div class="col">
-                     <div class="content-section">
-                         <h3 class="text-center">StockGestor</h3>
-                         <ul class="list-group text-center">
-                             <li class="list-group-item">Estoque</li>
-                             <li class="list-group-item">Cadastro</li>
-                         </ul>
-                     </div>
+                    <div class="border border-dark p-3 rounded">
+                        <ul class="list-group text-center">
+                            <a href="{% url 'lista_fornecedores' %}">
+                                <button type="button"
+                                    class="btn btn-outline-primary btn-block btn-fixed-width">Estoque</button>
+                            </a>
+                            <a href="{% url 'logado' %}">
+                                <button type="button"
+                                    class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                            </a>
+                        </ul>
+                    </div>
                  </div>
                  <div class="col-10">
                      <form class="row g-5 mt-3 " method="POST">

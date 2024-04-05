@@ -13,7 +13,7 @@ def registro(request):
         form = RegistroForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/logado")
+            return redirect("/cadastro_produto")
         
     else:
         form = RegistroForm()

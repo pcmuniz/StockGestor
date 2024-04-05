@@ -23,17 +23,17 @@ Home | StockGestor
                         <a class="nav-link mx-lg-2 active" href="{% url 'cadastro_produto' %}">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#">Fornecedores</a>
+                        <a class="nav-link mx-lg-2" href="{% url 'logado' %}">Fornecedores</a>
                     </li>
 
                 </ul>
             </div>
         </div>
-        <a href="registro" class="login-button">Login</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                <!-- <img src="https://i.stack.imgur.com/KKhkr.png?s=128&g=1" alt="alguma imagem"> -->
+            </button>
+        </div>
     </div>
 </nav>
 {% endblock navbar %}
