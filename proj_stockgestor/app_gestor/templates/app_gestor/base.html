@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {% block navbar %}
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand me-auto" href="#">
@@ -48,6 +49,7 @@
             </button>
         </div>
     </nav>
+    {% endblock navbar %}
 
     {% block content %}
     <!--

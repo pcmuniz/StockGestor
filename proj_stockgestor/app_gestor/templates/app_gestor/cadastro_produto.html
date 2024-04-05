@@ -5,18 +5,54 @@
 Home | StockGestor
 {% endblock title %}
 
+{% block navbar %}
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand me-auto" href="#">
+            <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
+        </a>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2 active" href="{% url 'cadastro_produto' %}">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-lg-2" href="#">Fornecedores</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <a href="registro" class="login-button">Login</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% endblock navbar %}
+
 {% block content %}
 <main>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="border p-3 rounded">
+                <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
-                        <h3 class="text-center">StockGestor</h3>
-                        <a href="{% url 'lista_produto' %}">
-                            <button type="button" class="btn btn-primary btn-sm">Estoque</button>
+                        <a href="{% url 'lista_produtos' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Estoque</button>
                         </a>
-                        <button type="button" class="btn btn-primary btn-sm">Cadastro</button>
+                        <a href="{% url 'cadastro_produto' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -78,7 +114,9 @@ Home | StockGestor
                         <input type="text" name="descricao" class="form-control" maxlength="2" required>
                     </div>
                     <div class="col-12 my-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <a href="{% url 'lista_produtos' %}">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </a>
                     </div>
                 </form>
             </div>
