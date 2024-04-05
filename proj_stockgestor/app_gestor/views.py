@@ -1,6 +1,6 @@
+from urllib import request
 from django.shortcuts import redirect, render, HttpResponse
-from django.contrib.auth import login
-from .forms import SignupForm
+from .forms import RegistroForm
 from .models import Fornecedores
 from .models import Produtos
 
@@ -8,16 +8,17 @@ def home(request):
     return render(request, 'app_gestor/home.html')
 
 # TDDO: criar login()
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
+def registro(request):
+    if request.method == "POST":
+        form = RegistroForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request,user)
-            return redirect('app_gestor/base_logado.html')
+            form.save()
+            return redirect("/logado")
+        
     else:
-        form = SignupForm()
-    return render(request,'app_gestor/registro.html',{'form': form})
+        form = RegistroForm()
+    
+    return render(request, "app_gestor/registro.html", {"form":form})
 
 
 def logado(request):

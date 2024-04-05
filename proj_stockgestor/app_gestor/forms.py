@@ -1,8 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
-class SignupForm(UserCreationForm):
+class RegistroForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
 
     class Meta:
