@@ -39,3 +39,17 @@ class Fornecedores(models.Model):
     uf = models.CharField(max_length = 2, default="NULL")
     fornecedor_email = models.EmailField(max_length = 40)
     fornecedor_telefone = models.CharField(max_length = 12)
+
+class Produtos(models.Model):
+    codigo = models.IntegerField()
+    codigo_barras = models.IntegerField()
+    preco_compra = models.FloatField(max_length=8)
+    nome_produto = models.CharField(max_length=40)
+    ref = models.CharField(max_length=30)
+    marca = models.CharField(max_length=15)
+    categoria = models.CharField(max_length=10)
+    localizacao = models.CharField(max_length=3)
+    fornecedor = models.CharField(max_length=40)
+    descricao = models.CharField(max_length=100, default="Descrição")
+    data_entrada = models.DateField()
+    validade = models.DateField()
