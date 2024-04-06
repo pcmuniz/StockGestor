@@ -1,19 +1,19 @@
 {% extends "app_gestor/base.html" %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    <p><label for="title">Escreva sua pergunta:</label>
-        <input type="text" name="title" id="title" size="50" maxlength="200">
-    </p>
-    <p><label for="details">Detalhe o problema:<br />
-            <textarea rows="10" cols="40" id="details" name="details"></textarea>
-    </p>
-    <p><label for="have_tried">Escreva o que você já tentou:<br />
-            <textarea rows="10" cols="40" id="have_tried" name="have_tried"></textarea>
-    </p>
-
-    <input type="submit" name="dopost" value="Salvar" />
-
-</form>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
 {% endblock %}

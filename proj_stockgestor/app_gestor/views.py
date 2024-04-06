@@ -1,8 +1,11 @@
 from urllib import request
 from django.shortcuts import redirect, render, HttpResponse
 from .forms import RegistroForm
-from .models import Fornecedores
+from .models import CustomUser, Fornecedores
 from .models import Produtos
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.models import User
 
 def home(request):
     return render(request, 'app_gestor/home.html')
@@ -20,6 +23,22 @@ def registro(request):
     
     return render(request, "app_gestor/registro.html", {"form":form})
 
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            user = CustomUser.objects.get(username=username)
+        except CustomUser.DoesNotExist:
+            user = None
+            print(user)
+        if user is not None and check_password(password, user.password):
+            return redirect('/cadastro_produto')
+        else:
+            error_message = "Credenciais inválidas. Por favor, tente novamente."
+            return render(request, 'app_gestor/login.html', {'error_message': error_message})
+    else:
+        return render(request, 'app_gestor/login.html')
 
 def logado(request):
     if request.method == "POST":
