@@ -6,9 +6,11 @@ from .models import Produtos
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User
+from django.views import View
 
-def home(request):
-    return render(request, 'app_gestor/home.html')
+class PaginaInicialView(View):
+    def get(self, request):
+        return render(request, 'app_gestor/home.html')
 
 # TDDO: criar login()
 def registro(request):
