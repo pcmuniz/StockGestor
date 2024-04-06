@@ -20,10 +20,10 @@ Home | StockGestor
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{% url 'cadastro_produto' %}">Produtos</a>
+                        <a class="nav-link mx-lg-2" href="{% url 'pagina-cadastro_produto' %}">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" href="{% url 'lista_fornecedores' %}">Fornecedores</a>
+                        <a class="nav-link mx-lg-2 active" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
                     </li>
 
                 </ul>
@@ -45,11 +45,11 @@ Home | StockGestor
             <div class="col">
                 <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
-                        <a href="{% url 'lista_produtos' %}">
+                        <a href="{% url 'pagina-lista_produtos' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Fornecedores</button>
                         </a>
-                        <a href="{% url 'logado' %}">
+                        <a href="{% url 'pagina-cadastro_fornecedor' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
                         </a>

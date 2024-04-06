@@ -27,10 +27,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'cadastro_produto' %}">Produtos</a>
+                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-cadastro_produto' %}">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" href="{% url 'logado' %}">Fornecedores</a>
+                            <a class="nav-link mx-lg-2 active" href="{% url 'pagina-cadastro_fornecedor' %}">Fornecedores</a>
                         </li>
                         <li class="nav-item">
                     </ul>
@@ -60,11 +60,11 @@
                  <div class="col">
                     <div class="border border-dark p-3 rounded">
                         <ul class="list-group text-center">
-                            <a href="{% url 'lista_fornecedores' %}">
+                            <a href="{% url 'pagina-lista_fornecedores' %}">
                                 <button type="button"
                                     class="btn btn-outline-primary btn-block btn-fixed-width">Fornecedores</button>
                             </a>
-                            <a href="{% url 'logado' %}">
+                            <a href="{% url 'pagina-cadastro_fornecedor' %}">
                                 <button type="button"
                                     class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
                             </a>
