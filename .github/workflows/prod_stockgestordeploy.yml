@@ -28,17 +28,12 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r proj_stockgestor/requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
-        run: |
-          cd proj_stockgestor/
-          zip release.zip ./* -r
-          cd ..
-          mv proj_stockgestor/release.zip .
-
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
@@ -47,13 +42,6 @@ jobs:
           path: |
             release.zip
             !venv/
-
-      - name: Cleaning testing files
-        run: |
-          cd SEUPROJETODJANGO/
-          rm db.sqlite3
-          rm .env
-          cd ..
 
   deploy:
     runs-on: ubuntu-latest
@@ -77,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4F67B94782114495B4DB644B754E73A4 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_82017AA4A5014CFCBEFFD749578EA821 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FB0B27C41D474ED4827981AF619497D7 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FD2B9D1A7B5740F693F2D9BB430EC3AB }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1DACEF68722F4AA4898CD0B8410D36A9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_61C97895BCC94E998D0C0EE8DFBAA67A }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
