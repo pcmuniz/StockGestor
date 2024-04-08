@@ -22,13 +22,19 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <br>
 <a href="https://www.figma.com/file/Z4RLnHZ52gVCrKk8YsjhAT/StockGestor?type=design&node-id=2410%3A5206&mode=design&t=0ag9lRPBh1nog0hL-1"target="_blank">Protótipo no Figma</a>
 <br>
+<h4>Entrega 2</h4>
+<a href="https://ec2.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiNTI5OTNlYzNmMWZhNDk1YTg4MTM1MjllNGIxNjIxMDMiLCJwIjoiaiJ9" target="_blank">Link do Jira</a>
+<br>
+<a href="https://stockgestordeploy.azurewebsites.net/" target="_blank" >Link Azure</a>
+<br>
+<a href="#" target="_blank">ScreenCast</a>
+<br>
 <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/"target="_blank">Programação em Par</a>
 <br>
 <br>
-<img width="1319" alt="jira-board" src="https://github.com/erico-chen/StockGestor/assets/149506953/92697aad-c498-4007-a3b7-ac27690fe475">
-<img width="1214" alt="jira-backlog" src="https://github.com/erico-chen/StockGestor/assets/149506953/8b56a0b1-0a4e-459a-8f07-a25074066104">
+<img width="1319" alt="jira-board" src="https://github.com/pcmuniz/StockGestor/assets/149506953/18ff7b2d-c819-422c-85e9-2caa1d34fd03">
+<img width="1214" alt="jira-backlog" src="https://github.com/pcmuniz/StockGestor/assets/149506953/09222f41-0a0f-4be0-b878-945554d62313">
 <br>
-<br><a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/"target="_blank">Programação em Par</a>
 
 ## Equipe
 <img width="1319" alt="foto-grupo" src="https://github.com/pcmuniz/StockGestor/assets/99767869/6da5224d-a7ad-4cf4-95ea-5d7b81d3af82">
