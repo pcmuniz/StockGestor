@@ -7,6 +7,18 @@ from django.views import View
 class PaginaInicialView(View):
     def get(self, request):
         return render(request, 'app_gestor/home.html')
+    
+class PaginaServicosView(View):
+    def get(self, request):
+        return render(request, 'app_gestor/servicos.html')
+    
+class PaginaSobreView(View):
+    def get(self, request):
+        return render(request, 'app_gestor/sobre.html')
+    
+class PaginaContatoView(View):
+    def get(self, request):
+        return render(request, 'app_gestor/contato.html')
 
 class RegistroView(View):
     # TDDO: criar login()

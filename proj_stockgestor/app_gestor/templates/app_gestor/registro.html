@@ -8,31 +8,34 @@
 
 
 {% block content %}
-<div class="container" style="background-color: aqua;">
-    <div class="row justify-content-center mt-5">
-        <div class="col-6">
-            <h2 class="text-center">Registre-se</h2>
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="id_username" class="form-label">Nome de usuário</label>
-                    {{ form.username }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_email" class="form-label">Email</label>
-                    {{ form.email }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_password1" class="form-label">Senha</label>
-                    {{ form.password1 }}
-                </div>
-                <div class="mb-3">
-                    <label for="id_password2" class="form-label">Confirme a senha</label>
-                    {{ form.password2 }}
-                </div>
-                <button type="submit" class="btn btn-primary">Registrar</button>
-            </form>
+    
+    <div class="container" >
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2 class="text-center">Registre-se</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Nome de usuário</label>
+                        <input class="form-control" {{ form.username }} required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input class="form-control" {{ form.email }} required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">Senha</label>
+                        <input class="form-control" {{ form.password1 }} required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">Confirme a senha</label>
+                        <input class="form-control" {{ form.password2 }} required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-{% endblock content %}
+    {% endblock content %}

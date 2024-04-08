@@ -1,0 +1,86 @@
+{% extends 'app_gestor/base.html' %}
+{% load static %}
+
+{% block title %}
+Serviços | StockGestor
+{% endblock title %}
+{% block active %}
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-inicial' %}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" href="{% url 'pagina-servicos' %}">Serviços</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-sobre' %}">Sobre nós</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-contato' %}">Contato</a>
+</li>
+{% endblock active %}
+{% block content %}
+<style>
+    body {
+        background-color: #B0E0E6;
+    }
+
+    #left-img {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+    #right-img {
+        padding-right: 20px;
+        padding-top: 20px;
+        text-align: right;
+    }
+
+    .text-cell {
+        padding: 0 50px;
+    }
+
+    .custom-heading {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<body>
+    <div class="custom-heading text-center">Quem somos nós?</div>
+
+    <table>
+        <tr>
+            <td>
+                <img id="left-img" width="400" height="300" src="{% static 'app_gestor/img/print_cadastros.png' %}" />
+            </td>
+            <td class="text-cell">
+                <h3>Utilizando o nosso sistema, você será capaz de cadastrar produtos e fornecedores.
+                    </br>
+                    Com uma interface simples e visualmente leve, o processo de preenchimento se torna menos massivo.
+                </h3>
+            </td>
+        </tr>
+
+    </table>
+    <table>
+        <tr>
+            <td class="text-cell">
+                <h3>Além disso, você poderá visualizar, em forma de tabela, os produtos e fornecedores cadastrados.
+                    </br>
+                    Algumas informações adicionais também podem ser vistas, facilitando a busca por um elemento.
+                </h3>
+            </td>
+            <td>
+                <img id="right-img" width="400" height="300"
+                    src="{% static 'app_gestor/img/print_visualizacao.png' %}" />
+            </td>
+        </tr>
+
+    </table>
+</body>
+{% endblock %}

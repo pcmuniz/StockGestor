@@ -1,0 +1,32 @@
+{% extends 'app_gestor/base.html' %}
+{% load static %}
+
+{% block title %}
+Serviços | StockGestor
+{% endblock title %}
+{% block active %}
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-inicial' %}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-servicos' %}">Serviços</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-sobre' %}">Sobre nós</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" href="{% url 'pagina-contato' %}">Contato</a>
+</li>
+{% endblock active %}
+
+{% block content %}
+<style>
+
+</style>
+
+<body>
+
+</body>
+
+
+{% endblock %}

@@ -8,7 +8,6 @@
     <title>{% block title %}Título{% endblock title %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        
     <link rel="stylesheet" href="{% static 'app_gestor/css/style.css' %}">
 
 </head>
@@ -17,7 +16,7 @@
     {% block navbar %}
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="#">
+            <a class="navbar-brand me-auto" href="{% url 'pagina-inicial' %}">
                 <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
             </a>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
@@ -28,22 +27,24 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        {% block active %}
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 active" aria-current="page" href="{% url 'pagina-inicial' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#">Serviços</a>
+                            <a class="nav-link mx-lg-2" href="{% url 'pagina-servicos' %}">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#">Quem somos</a>
+                            <a class="nav-link mx-lg-2" href="{% url 'pagina-sobre' %}">Sobre nós</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="#">Contato</a>
+                            <a class="nav-link mx-lg-2" href="{% url 'pagina-contato' %}">Contato</a>
                         </li>
+                        {% endblock active %}
                     </ul>
                 </div>
             </div>
-            <a href="login" class="login-button">Login</a>
+            <a href="{% url 'pagina-login' %}" class="login-button">Login</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

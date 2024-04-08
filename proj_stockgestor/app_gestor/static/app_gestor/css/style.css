@@ -18,6 +18,7 @@
     margin: 20px;
     border-radius: 20px;
     padding: 0.25rem;
+    
 }
 
 .navbar-toggler {
@@ -69,6 +70,7 @@ main {
     background-size: cover;
     width: 100%;
     height: auto;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.6);
 }
 
 .hero-section::before {

@@ -1,0 +1,50 @@
+{% extends 'app_gestor/base.html' %}
+{% load static %}
+
+{% block title %}
+Sobre | StockGestor
+{% endblock title %}
+{% block active %}
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-inicial' %}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-servicos' %}">Serviços</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" href="{% url 'pagina-sobre' %}">Sobre nós</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-contato' %}">Contato</a>
+</li>
+{% endblock active %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #B0E0E6;
+    }
+    #div-0 {
+        padding-top: 40px;
+    }
+    .custom-heading {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+</style>
+<body>
+    <div class="custom-heading text-center">Quem somos nós?</div>
+    <div id="div-0" class="text-center">
+        <h3>Somos alunos do segundo período de Ciência da Computação da Cesar School</h3>
+        <h3>Nós pensamos em criar um gestor de estoque simplificado e intuitivo, sendo uma alternativa a outros sistemas com interfaces robustas e pouco intuitivas.</h3>
+        <img 
+                    src="{% static 'app_gestor/img/equipa_fds.png' %}" />
+    </div>
+</body>
+
+{% endblock %}
