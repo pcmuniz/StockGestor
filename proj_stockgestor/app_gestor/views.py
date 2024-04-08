@@ -23,7 +23,8 @@ class PaginaContatoView(View):
 class RegistroView(View):
     # TDDO: criar login()
     def get(self, request):
-            return render(request, 'app_gestor/registro.html')
+        form = RegistroForm()
+        return render(request, 'app_gestor/registro.html', {'form': form})
     
     def post(self, request):
         if request.method == "POST":
