@@ -25,6 +25,8 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <h4>Entrega 2</h4>
 <a href="https://ec2.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiNTI5OTNlYzNmMWZhNDk1YTg4MTM1MjllNGIxNjIxMDMiLCJwIjoiaiJ9" target="_blank">Link do Jira</a>
 <br>
+<a href="#" target="_blank">Diagrama de Atividades</a>
+<br>
 <a href="https://stockgestordeploy.azurewebsites.net/" target="_blank" >Link Azure</a>
 <br>
 <a href="#" target="_blank">ScreenCast</a>
