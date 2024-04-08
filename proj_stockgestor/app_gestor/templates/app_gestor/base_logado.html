@@ -27,10 +27,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'cadastro_produto' %}">Produtos</a>
+                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-cadastro_produto' %}">Produtos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" href="{% url 'logado' %}">Fornecedores</a>
+                            <a class="nav-link mx-lg-2 active" href="{% url 'pagina-cadastro_fornecedor' %}">Fornecedores</a>
                         </li>
                         <li class="nav-item">
                     </ul>
@@ -60,11 +60,11 @@
                  <div class="col">
                     <div class="border border-dark p-3 rounded">
                         <ul class="list-group text-center">
-                            <a href="{% url 'lista_fornecedores' %}">
+                            <a href="{% url 'pagina-lista_fornecedores' %}">
                                 <button type="button"
                                     class="btn btn-outline-primary btn-block btn-fixed-width">Fornecedores</button>
                             </a>
-                            <a href="{% url 'logado' %}">
+                            <a href="{% url 'pagina-cadastro_fornecedor' %}">
                                 <button type="button"
                                     class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
                             </a>
@@ -72,9 +72,9 @@
                     </div>
                  </div>
                  <div class="col-10">
-                     <form class="row g-5 mt-3 " method="POST">
+                     <form class="row g-1 mt-3 " method="POST">
                         {% csrf_token %}
-                         <div class="col-12 my-3">
+                         <div class="col-11 my-3">
                              <label for="nome_empresa" class="form-label">Nome da Empresa</label>
                              <input type="text" name="nome_empresa" class="form-control" placeholder="Digite o nome da empresa" maxlength="40" required>
                          </div>
@@ -86,7 +86,7 @@
                              <label for="ie" class="form-label">IE</label>
                              <input type="text" name="ie" class="form-control" placeholder="Digite a IE" maxlength="15" required>
                          </div>
-                         <div class="col-4 my-3">
+                         <div class="col-3 my-3">
                              <label for="im" class="form-label">IM</label>
                              <input type="text" name="im" class="form-control" placeholder="Digite a IM" maxlength="15" required>
                          </div>
@@ -94,7 +94,7 @@
                              <label for="endereco" class="form-label">Endereço</label>
                              <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço" maxlength="40" required>
                          </div>
-                         <div class="col-4 my-3">
+                         <div class="col-3 my-3">
                              <label for="uf" class="form-label">UF</label>
                              <input type="text" name="uf" class="form-control" maxlength="2" required>
                          </div>
@@ -102,7 +102,7 @@
                              <label for="email" class="form-label">Email</label>
                              <input type="email" name="email" class="form-control" required>
                          </div>
-                         <div class="col-4 my-3">
+                         <div class="col-3 my-3">
                              <label for="telefone" class="form-label">Telefone</label>
                              <input type="tel" name="telefone" placeholder="(xx)x-xxxx-xxxx"class="form-control" patern="([0-9]{2})[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
                          </div>
@@ -117,27 +117,7 @@
     
 
     {% endblock content %}
-
-    <!-- <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fixed-bottom">
-            <p class="col-md-4 mb-0 text-muted">&copy; 2024 StockGestor, Inc</p>
-
-            <a href="/"
-                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="28">
-                    <use xlink:href="#bootstrap" />
-                </svg>
-                <img src="{% static 'app_gestor/img/logo_icone.png' %}" width="73" height="84">
-            </a>
-
-            <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Serviços</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Quem somos</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
-            </ul>
-        </footer>
-    </div> -->
+    
     <footer class="p-2 bg-dark text-light text-center fixed-bottom">&copy;2024 - StockGestor Inc. All rights reserved.</footer>
 
 

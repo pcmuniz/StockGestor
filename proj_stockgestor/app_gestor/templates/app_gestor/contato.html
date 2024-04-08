@@ -1,0 +1,53 @@
+{% extends 'app_gestor/base.html' %}
+{% load static %}
+
+{% block title %}
+Serviços | StockGestor
+{% endblock title %}
+{% block active %}
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-inicial' %}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-servicos' %}">Serviços</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-sobre' %}">Sobre nós</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" href="{% url 'pagina-contato' %}">Contato</a>
+</li>
+{% endblock active %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #B0E0E6;
+    }
+    #div-0 {
+        padding-top: 120px ;
+    }
+    .custom-heading {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<body>
+
+    <div class="custom-heading text-center">Como entrar em contato?</div>
+    <div id="div-0" class="text-center">
+        <h3>Você pode nos encontrar no GitHub, clicando <a href="https://github.com/pcmuniz/StockGestor" target="_blank">aqui.</a></h3>
+        
+        <h3>Ou encontrar os nossos perfis clicando <a href="https://github.com/pcmuniz/StockGestor/graphs/contributors" target="_blank">aqui.</h3>
+    </div>
+
+</body>
+
+
+{% endblock %}

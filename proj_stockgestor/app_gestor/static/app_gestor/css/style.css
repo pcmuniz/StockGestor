@@ -61,22 +61,41 @@
 }
 
 main {
-    height: 10vh;
+    height: 400vh;
 }
 
 #bkg {
     background-image: url(bkg.png) no-repeat center;
     background-size: cover;
     width: 100%;
-    height: auto;
+    /* height: auto; */
 }
 
 .hero-section::before {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     content: "";
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.text-overlay h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.text-overlay p {
+    font-size: 18px;
 }

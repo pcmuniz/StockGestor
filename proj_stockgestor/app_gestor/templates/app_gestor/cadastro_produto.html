@@ -20,10 +20,10 @@ Home | StockGestor
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" href="{% url 'cadastro_produto' %}">Produtos</a>
+                        <a class="nav-link mx-lg-2 active" href="{% url 'pagina-cadastro_produto' %}">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{% url 'logado' %}">Fornecedores</a>
+                        <a class="nav-link mx-lg-2" href="{% url 'pagina-cadastro_fornecedor' %}">Fornecedores</a>
                     </li>
 
                 </ul>
@@ -45,11 +45,11 @@ Home | StockGestor
             <div class="col">
                 <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
-                        <a href="{% url 'lista_produtos' %}">
+                        <a href="{% url 'pagina-lista_produtos' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Estoque</button>
                         </a>
-                        <a href="{% url 'cadastro_produto' %}">
+                        <a href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
                         </a>
@@ -57,7 +57,7 @@ Home | StockGestor
                 </div>
             </div>
             <div class="col-10">
-                <form class="row g-5 mt-3 " method="POST">
+                <form class="row g-1 mt-3 " method="POST">
                     {% csrf_token %}
                     <div class="col-12 my-3">
                         <label for="nome_produto" class="form-label">Nome do produto</label>
@@ -114,7 +114,7 @@ Home | StockGestor
                         <input type="text" name="descricao" class="form-control" maxlength="2" required>
                     </div>
                     <div class="col-12 my-3 d-flex justify-content-center">
-                        <a href="{% url 'lista_produtos' %}">
+                        <a href="{% url 'pagina-lista_produtos' %}">
                             <button type="submit" class="btn btn-success">Salvar</button>
                         </a>
                     </div>
