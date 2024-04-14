@@ -86,7 +86,7 @@ class ListaFornecedoresView(View):
 
 class CadastroFornecedorView(View):
     def get(self, request):
-        return render(request, 'app_gestor/base_logado.html')
+        return render(request, 'app_gestor/cadastro_fornecedor.html')
 
     def post(self, request):
         if request.method == "POST":
@@ -96,7 +96,7 @@ class CadastroFornecedorView(View):
                                     , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
             fornecedor.save()
         
-        return render(request, 'app_gestor/base_logado.html')
+        return render(request, 'app_gestor/cadastro_fornecedor.html')
 
 
 
