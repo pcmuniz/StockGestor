@@ -54,3 +54,7 @@ class Produtos(models.Model):
     descricao = models.CharField(max_length=100, default="Descrição")
     data_entrada = models.DateField()
     validade = models.DateField()
+
+    @property
+    def preco_total(self):
+        return self.preco_compra * self.quantidade

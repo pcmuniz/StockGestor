@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Produto | Lista
+Produto | Valor
 {% endblock title %}
 
 {% block navbar %}
@@ -25,60 +25,66 @@ Produto | Lista
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="{% url 'pagina-cadastro_fornecedor' %}">Fornecedores</a>
                     </li>
-
                 </ul>
             </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                <!-- <img src="https://i.stack.imgur.com/KKhkr.png?s=128&g=1" alt="alguma imagem"> -->
-            </button>
         </div>
     </div>
 </nav>
 {% endblock navbar %}
+
 {% block content %}
-<!-- TODO: estética da listagem-->
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-2"> <!-- Coluna para os botões -->
                 <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
                         <a href="{% url 'pagina-lista_produtos' %}">
-                            <button type="button"
-                                class="btn btn-outline-primary active btn-block btn-fixed-width">Estoque</button>
+                            <button type="button" class="btn btn-outline-primary btn-block">Estoque</button>
                         </a>
                         <a href="{% url 'pagina-cadastro_produto' %}">
-                            <button type="button"
-                                class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                            <button type="button" class="btn btn-outline-primary btn-block">Cadastro</button>
                         </a>
                         <a href="{% url 'pagina-valor_estoque' %}">
-                            <button type="button"
-                                class="btn btn-outline-primary btn-block btn-fixed-width">Valor do estoque</button>
+                            <button type="button" class="btn btn-outline-primary active btn-block">Valor do estoque</button>
                         </a>
                     </ul>
                 </div>
             </div>
-            <div class="col-10">
+
+            <div class="col-5">
                 <table class="table table-dark table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Código</th>
                             <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Preço</th>
-                            <!-- TODO: add restante das colunas -->
+                            <th>Total parcial</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for produto in produtos %}
                         <tr>
-                            <td>{{ produto.codigo }}</td>
                             <td>{{ produto.nome_produto }}</td>
-                            <td>{{ produto.localizacao }}</td>
-                            <td>{{ produto.preco_compra }}</td>
-                            <!-- TODO: add restante das colunas -->
+                            <td>{{ produto.preco_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+            </div>
+
+            <div class="col-5">
+                <table class="table table-dark table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Estoque</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                        <tr>
+                            <td>———————————————</td>
+                            <td>{{ produto.total_valor_estoque|floatformat:2}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -87,5 +93,4 @@ Produto | Lista
         </div>
     </div>
 </main>
-
 {% endblock content %}

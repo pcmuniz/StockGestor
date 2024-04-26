@@ -13,4 +13,5 @@ urlpatterns=[
     path('cadastro_produto/', views.CadastroProdutosView.as_view(), name='pagina-cadastro_produto'),
     path('lista_fornecedores/', views.ListaFornecedoresView.as_view(), name='pagina-lista_fornecedores'),
     path('logado/', views.CadastroFornecedorView.as_view(), name='pagina-cadastro_fornecedor'),
+    path('valor_estoque/', views.ValorEstoqueView.as_view(), name='pagina-valor_estoque'),
 ]
