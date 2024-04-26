@@ -74,7 +74,7 @@ class CadastroProdutosView(View):
             form = request.POST
             produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
                                 fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
-                                codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
+                                quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
             produto.save()
 
         return render(request, 'app_gestor/cadastro_produto.html')

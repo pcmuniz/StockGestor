@@ -42,6 +42,7 @@ class Fornecedores(models.Model):
 
 class Produtos(models.Model):
     codigo = models.IntegerField()
+    quantidade = models.IntegerField(default=0)
     codigo_barras = models.IntegerField()
     preco_compra = models.FloatField(max_length=8)
     nome_produto = models.CharField(max_length=40)
