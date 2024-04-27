@@ -3,6 +3,7 @@ from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
 from django.views import View
+from django.db.models import F, FloatField, ExpressionWrapper, Sum
 
 class PaginaInicialView(View):
     def get(self, request):
@@ -28,11 +29,21 @@ class ValorEstoqueView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
 
+        valor_total = ExpressionWrapper(
+            F('preco_compra') * F('quantidade'),
+            output_field=FloatField()
+        )
+
+        soma_valor_estoque = produtos.aggregate(total=Sum(valor_total))
+
         context = {
             'produtos': produtos,
+            'soma_valor_estoque': soma_valor_estoque['total'],
         }
 
         return render(request, 'app_gestor/valor_estoque.html', context)
+
+
 
 class RegistroView(View):
     # TDDO: criar login()
