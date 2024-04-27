@@ -64,7 +64,7 @@ Produto | Valor
                         {% for produto in produtos %}
                         <tr>
                             <td>{{ produto.nome_produto }}</td>
-                            <td>{{ produto.preco_total }}</td>
+                            <td>R${{ produto.preco_total }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -81,12 +81,10 @@ Produto | Valor
                         </tr>
                     </thead>
                     <tbody>
-                        {% for produto in produtos %}
                         <tr>
                             <td>———————————————</td>
-                            <td>{{ produto.total_valor_estoque|floatformat:2}}</td>
+                            <td>R${{ produto.preco_total }}</td>
                         </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>

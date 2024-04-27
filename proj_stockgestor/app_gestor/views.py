@@ -27,11 +27,9 @@ class ValorEstoqueView(View):
 class ValorEstoqueView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
-        total_valor_estoque = sum(produto.preco_total for produto in produtos)
 
         context = {
             'produtos': produtos,
-            'total_valor_estoque': total_valor_estoque,
         }
 
         return render(request, 'app_gestor/valor_estoque.html', context)

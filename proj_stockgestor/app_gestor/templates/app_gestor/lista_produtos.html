@@ -67,7 +67,7 @@ Produto | Lista
                             <th>Código</th>
                             <th>Produto</th>
                             <th>Quantidade</th>
-                            <th>Preço</th>
+                            <th>Preço unitário</th>
                             <!-- TODO: add restante das colunas -->
                         </tr>
                     </thead>
@@ -76,8 +76,8 @@ Produto | Lista
                         <tr>
                             <td>{{ produto.codigo }}</td>
                             <td>{{ produto.nome_produto }}</td>
-                            <td>{{ produto.localizacao }}</td>
-                            <td>{{ produto.preco_compra }}</td>
+                            <td>{{ produto.quantidade }}</td>
+                            <td>R${{ produto.preco_compra }}</td>
                             <!-- TODO: add restante das colunas -->
                         </tr>
                         {% endfor %}
