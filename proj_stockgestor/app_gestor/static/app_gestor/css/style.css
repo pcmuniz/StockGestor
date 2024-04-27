@@ -60,10 +60,6 @@
     visibility: visible;
 }
 
-main {
-    height: 400vh;
-}
-
 #bkg {
     background-image: url(bkg.png) no-repeat center;
     background-size: cover;

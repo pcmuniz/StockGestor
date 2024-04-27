@@ -42,6 +42,7 @@ class Fornecedores(models.Model):
 
 class Produtos(models.Model):
     codigo = models.IntegerField()
+    quantidade = models.IntegerField(default=0)
     codigo_barras = models.IntegerField()
     preco_compra = models.FloatField(max_length=8)
     nome_produto = models.CharField(max_length=40)
@@ -53,3 +54,7 @@ class Produtos(models.Model):
     descricao = models.CharField(max_length=100, default="Descrição")
     data_entrada = models.DateField()
     validade = models.DateField()
+
+    @property
+    def preco_total(self):
+        return self.preco_compra * self.quantidade

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Home | StockGestor
+Produto | Lista
 {% endblock title %}
 
 {% block navbar %}
@@ -47,11 +47,15 @@ Home | StockGestor
                     <ul class="list-group text-center">
                         <a href="{% url 'pagina-lista_produtos' %}">
                             <button type="button"
-                                class="btn btn-outline-primary btn-block btn-fixed-width">Estoque</button>
+                                class="btn btn-outline-primary active btn-block btn-fixed-width">Estoque</button>
                         </a>
                         <a href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                        </a>
+                        <a href="{% url 'pagina-valor_estoque' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Valor do estoque</button>
                         </a>
                     </ul>
                 </div>
@@ -63,7 +67,7 @@ Home | StockGestor
                             <th>Código</th>
                             <th>Produto</th>
                             <th>Quantidade</th>
-                            <th>Preço</th>
+                            <th>Preço unitário</th>
                             <!-- TODO: add restante das colunas -->
                         </tr>
                     </thead>
@@ -72,8 +76,8 @@ Home | StockGestor
                         <tr>
                             <td>{{ produto.codigo }}</td>
                             <td>{{ produto.nome_produto }}</td>
-                            <td>{{ produto.localizacao }}</td>
-                            <td>{{ produto.preco_compra }}</td>
+                            <td>{{ produto.quantidade }}</td>
+                            <td>R${{ produto.preco_compra }}</td>
                             <!-- TODO: add restante das colunas -->
                         </tr>
                         {% endfor %}

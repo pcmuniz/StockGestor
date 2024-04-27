@@ -3,6 +3,7 @@ from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
 from django.views import View
+from django.db.models import F, FloatField, ExpressionWrapper, Sum
 
 class PaginaInicialView(View):
     def get(self, request):
@@ -19,6 +20,30 @@ class PaginaSobreView(View):
 class PaginaContatoView(View):
     def get(self, request):
         return render(request, 'app_gestor/contato.html')
+    
+class ValorEstoqueView(View):
+    def get(self, request):
+        return render(request, 'app_gestor/valor_estoque.html')
+
+class ValorEstoqueView(View):
+    def get(self, request):
+        produtos = Produtos.objects.all()
+
+        valor_total = ExpressionWrapper(
+            F('preco_compra') * F('quantidade'),
+            output_field=FloatField()
+        )
+
+        soma_valor_estoque = produtos.aggregate(total=Sum(valor_total))
+
+        context = {
+            'produtos': produtos,
+            'soma_valor_estoque': soma_valor_estoque['total'],
+        }
+
+        return render(request, 'app_gestor/valor_estoque.html', context)
+
+
 
 class RegistroView(View):
     # TDDO: criar login()
@@ -74,7 +99,7 @@ class CadastroProdutosView(View):
             form = request.POST
             produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
                                 fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
-                                codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
+                                quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
             produto.save()
 
         return render(request, 'app_gestor/cadastro_produto.html')
@@ -86,7 +111,7 @@ class ListaFornecedoresView(View):
 
 class CadastroFornecedorView(View):
     def get(self, request):
-        return render(request, 'app_gestor/base_logado.html')
+        return render(request, 'app_gestor/cadastro_fornecedor.html')
 
     def post(self, request):
         if request.method == "POST":
@@ -96,7 +121,7 @@ class CadastroFornecedorView(View):
                                     , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
             fornecedor.save()
         
-        return render(request, 'app_gestor/base_logado.html')
+        return render(request, 'app_gestor/cadastro_fornecedor.html')
 
 
 

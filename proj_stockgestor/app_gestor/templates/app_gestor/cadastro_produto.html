@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Home | StockGestor
+Produto | Cadastro
 {% endblock title %}
 
 {% block navbar %}
@@ -51,7 +51,11 @@ Home | StockGestor
                         </a>
                         <a href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button"
-                                class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                                class="btn btn-outline-primary active btn-block btn-fixed-width">Cadastro</button>
+                        </a>
+                        <a href="{% url 'pagina-valor_estoque' %}">
+                            <button type="button"
+                                class="btn btn-outline-primary btn-block btn-fixed-width">Valor do estoque</button>
                         </a>
                     </ul>
                 </div>
@@ -86,7 +90,7 @@ Home | StockGestor
                     </div>
                     <div class="col-4 my-3">
                         <label for="fornecedor" class="form-label">Fornecedor</label>
-                        <input type="text" name="fornecedor" class="form-control" maxlength="2" required>
+                        <input type="text" name="fornecedor" class="form-control" maxlength="40" required>
                     </div>
                     <div class="col-md-8 my-3">
                         <label for="data_entrada" class="form-label">Data de entrada</label>
@@ -99,19 +103,23 @@ Home | StockGestor
                     </div>
                     <div class="col-4 my-3">
                         <label for="codigo" class="form-label">Código</label>
-                        <input type="text" name="codigo" class="form-control" maxlength="2" required>
+                        <input type="text" name="codigo" class="form-control" maxlength="8" required>
+                    </div>
+                    <div class="col-4 my-3">
+                        <label for="quantidade" class="form-label">Quantidade</label>
+                        <input type="text" name="quantidade" class="form-control" maxlength="4" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="codigo_barras" class="form-label">Código de barras</label>
-                        <input type="text" name="codigo_barras" class="form-control" maxlength="2" required>
+                        <input type="text" name="codigo_barras" class="form-control" maxlength="13" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="preco_compra" class="form-label">Preço de compra</label>
-                        <input type="text" name="preco_compra" class="form-control" maxlength="2" required>
+                        <input type="text" name="preco_compra" class="form-control" maxlength="8" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <input type="text" name="descricao" class="form-control" maxlength="2" required>
+                        <input type="text" name="descricao" class="form-control" maxlength="100" required>
                     </div>
                     <div class="col-12 my-3 d-flex justify-content-center">
                         <a href="{% url 'pagina-lista_produtos' %}">
