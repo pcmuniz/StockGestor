@@ -61,6 +61,15 @@ Produto | Cadastro
                 </div>
             </div>
             <div class="col-10">
+                {% if messages %}
+                                 <ul class="messages">
+                                     {% for message in messages %}
+                                         <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>
+                                             {{message}}
+                                         </li>
+                                     {% endfor %}
+                                 </ul>
+                     {% endif %}
                 <form class="row g-1 mt-3 " method="POST">
                     {% csrf_token %}
                     <div class="col-12 my-3">
@@ -86,7 +95,7 @@ Produto | Cadastro
                     <div class="col-8 my-3">
                         <label for="localizacao" class="form-label">Localização</label>
                         <input type="text" name="localizacao" class="form-control" placeholder="Digite a localização"
-                            maxlength="40" required>
+                            maxlength="3" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="fornecedor" class="form-label">Fornecedor</label>

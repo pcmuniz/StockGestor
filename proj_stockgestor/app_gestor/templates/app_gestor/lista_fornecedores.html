@@ -39,45 +39,59 @@ Fornecedor | Lista
 {% endblock navbar %}
 {% block content %}
 <!-- TODO: estética da listagem-->
-<main>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="border border-dark p-3 rounded">
-                    <ul class="list-group text-center">
-                        <a href="{% url 'pagina-lista_produtos' %}">
-                            <button type="button"
-                                class="btn btn-outline-primary active btn-block btn-fixed-width">Fornecedores</button>
-                        </a>
-                        <a href="{% url 'pagina-cadastro_fornecedor' %}">
-                            <button type="button"
-                                class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
-                        </a>
-                    </ul>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="border border-dark p-3 rounded">
+                        <ul class="list-group text-center">
+                            <a href="{% url 'pagina-lista_fornecedores' %}">
+                                <button type="button"
+                                    class="btn btn-outline-primary active btn-block btn-fixed-width">Fornecedores</button>
+                            </a>
+                            <a href="{% url 'pagina-cadastro_fornecedor' %}">
+                                <button type="button"
+                                    class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <table class="table table-dark table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CNPJ</th>
+                                <th>Endereço</th>
+                            </tr>
+                        </thead>
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>
+                                        {{message}}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <tbody>
+                            {% for fornecedor in fornecedores %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'deleta-fornecedor' fornecedor.id %}">
+                                        <img src="{% static 'app_gestor/img/pngwing.com.png' %}" width="25" height="25">
+                                    </a>
+                                    {{ fornecedor.nome_empresa }}
+                                </td>
+                                <td>{{ fornecedor.cnpj }}</td>
+                                <td>{{ fornecedor.endereco }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="col-10">
-                <table class="table table-dark table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>CNPJ</th>
-                            <th>Endereço</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for fornecedor in fornecedores %}
-                        <tr>
-                            <td>{{ fornecedor.nome_empresa }}</td>
-                            <td>{{ fornecedor.cnpj }}</td>
-                            <td>{{ fornecedor.endereco }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
         </div>
-    </div>
-</main>
-
-{% endblock content %}
+    </main>
+    
+    {% endblock content %}
