@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
+from django.contrib import messages
 from django.views import View
 from django.db.models import F, FloatField, ExpressionWrapper, Sum
 
@@ -101,6 +102,7 @@ class CadastroProdutosView(View):
                                 fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
                                 quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
             produto.save()
+            messages.info(request, 'Produto cadastrado com sucesso.')
 
         return render(request, 'app_gestor/cadastro_produto.html')
 
@@ -120,6 +122,8 @@ class CadastroFornecedorView(View):
                                     , inscricao_municipal=form["im"], endereco=form["endereco"], uf=form["uf"]
                                     , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
             fornecedor.save()
+
+        messages.info(request, 'Fornecedor cadastrado com sucesso.')
         
         return render(request, 'app_gestor/cadastro_fornecedor.html')
 
@@ -132,6 +136,9 @@ class CadastroFornecedorView(View):
 def deletaFornecedor(request,id):
     fornecedores = get_object_or_404(Fornecedores, pk=id)
     fornecedores.delete()
+
+    messages.info(request, 'Fornecedor deletado com sucesso.')
+
     return render(request, 'app_gestor/lista_fornecedores.html')
 
 

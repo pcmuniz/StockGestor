@@ -95,3 +95,13 @@
 .text-overlay p {
     font-size: 18px;
 }
+
+/* Mensagens */
+
+ul.messages {
+    padding: 0;
+}
+
+ul.messages li {
+    list-style: none;
+}

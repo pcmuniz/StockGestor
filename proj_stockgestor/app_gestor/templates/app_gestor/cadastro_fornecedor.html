@@ -67,6 +67,15 @@
                     </div>
                  </div>
                  <div class="col-10">
+                     {% if messages %}
+                                 <ul class="messages">
+                                     {% for message in messages %}
+                                         <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>
+                                             {{message}}
+                                         </li>
+                                     {% endfor %}
+                                 </ul>
+                     {% endif %}
                      <form class="row g-1 mt-3 " method="POST">
                         {% csrf_token %}
                          <div class="col-11 my-3">
