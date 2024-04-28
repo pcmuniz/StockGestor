@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
@@ -122,6 +122,18 @@ class CadastroFornecedorView(View):
             fornecedor.save()
         
         return render(request, 'app_gestor/cadastro_fornecedor.html')
+
+# class DeletaFornecedorView(View):
+#     def post(request,id):
+#         fornecedores = get_object_or_404(Fornecedores, pk=id)
+#         fornecedores.delete()
+#         return redirect('app_gestor/lista_fornecedores.html')
+    
+def deletaFornecedor(request,id):
+    fornecedores = get_object_or_404(Fornecedores, pk=id)
+    fornecedores.delete()
+    return render(request, 'app_gestor/lista_fornecedores.html')
+
 
 
 

@@ -14,4 +14,6 @@ urlpatterns=[
     path('lista_fornecedores/', views.ListaFornecedoresView.as_view(), name='pagina-lista_fornecedores'),
     path('logado/', views.CadastroFornecedorView.as_view(), name='pagina-cadastro_fornecedor'),
     path('valor_estoque/', views.ValorEstoqueView.as_view(), name='pagina-valor_estoque'),
+    # path('delete/<int:id>', views.DeletaFornecedorView.as_view(),name='deleta-fornecedor'),
+    path('delete/<int:id>', views.deletaFornecedor,name='deleta-fornecedor'),
 ]
