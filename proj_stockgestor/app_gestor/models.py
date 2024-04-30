@@ -55,6 +55,10 @@ class Produtos(models.Model):
     data_entrada = models.DateField()
     validade = models.DateField()
 
+    def __str__(self):
+        return "[" + str(self.id) + "] " + self.fornecedor
+
+
     @property
     def preco_total(self):
         return self.preco_compra * self.quantidade

@@ -88,8 +88,21 @@ class LoginView(View):
 class ListaProdutosView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
+        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        filtro = False
+        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos,'fornecedores': fornecedores_unicos, 'filtro': filtro})
+    
 
-        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos})
+    def post(self, request):
+        produtos = Produtos.objects.all()
+        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        if request.method == "POST":
+            # filtro = False
+            produtos = Produtos.objects.all()
+            fornecedor_escolhido = request.POST["fornecedor_escolhido"]
+            
+        return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores_unicos, 'fornecedor_filtro': fornecedor_escolhido})
+        
 
 class CadastroProdutosView(View):
     def get(self, request):
