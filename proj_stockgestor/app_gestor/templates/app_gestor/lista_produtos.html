@@ -1,44 +1,15 @@
-<!-- TODO: chamar bases-->
-{% extends 'app_gestor/base.html' %}
-{% load static %}
-
-{% block title %}
-Produto | Lista
-{% endblock title %}
-
+{% extends 'app_gestor/base_logado.html' %}
+{% block title %}Produto | Lista{% endblock title %}
 {% block navbar %}
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="#">
-            <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
-        </a>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                <!-- <img src="https://i.stack.imgur.com/KKhkr.png?s=128&g=1" alt="alguma imagem"> -->
-            </button>
-        </div>
-    </div>
-</nav>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
+</li>
+<li class="nav-item">
 {% endblock navbar %}
 {% block content %}
-<!-- TODO: estética da listagem-->
 <main>
     <div class="container-fluid">
         <div class="row">
@@ -122,5 +93,4 @@ Produto | Lista
         </div>
     </div>
 </main>
-
 {% endblock content %}

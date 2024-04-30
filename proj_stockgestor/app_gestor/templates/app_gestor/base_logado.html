@@ -26,6 +26,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                        {% block navbar %}
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
                         </li>
@@ -33,6 +34,7 @@
                             <a class="nav-link mx-lg-2 active" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
                         </li>
                         <li class="nav-item">
+                        {% endblock navbar %}
                     </ul>
                 </div>
             </div>

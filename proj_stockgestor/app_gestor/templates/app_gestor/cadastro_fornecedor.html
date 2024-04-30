@@ -1,133 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Fornecedor | Cadastro{% endblock title %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'app_gestor/css/style.css' %}">
-
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="#">
-                <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
-            </a>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2 active" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
-                        </li>
-                        <li class="nav-item">
-                    </ul>
-                </div>
+{% extends 'app_gestor/base_logado.html' %}
+{% block title %}Fornecedor | Cadastro {% endblock title %}
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+            <div class="border border-dark p-3 rounded">
+                <ul class="list-group text-center">
+                    <a href="{% url 'pagina-lista_fornecedores' %}">
+                        <button type="button"
+                            class="btn btn-outline-primary btn-block btn-fixed-width">Fornecedores</button>
+                    </a>
+                    <a href="{% url 'pagina-cadastro_fornecedor' %}">
+                        <button type="button"
+                            class="btn btn-outline-primary active btn-block btn-fixed-width">Cadastro</button>
+                    </a>
+                </ul>
             </div>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                    <!-- <img src="https://i.stack.imgur.com/KKhkr.png?s=128&g=1" alt="alguma imagem"> -->
-                </button>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-    {% block content %}
-    <main>
-        <div class="container-fluid">
-             <div class="row">
-                 <div class="col">
-                    <div class="border border-dark p-3 rounded">
-                        <ul class="list-group text-center">
-                            <a href="{% url 'pagina-lista_fornecedores' %}">
-                                <button type="button"
-                                    class="btn btn-outline-primary btn-block btn-fixed-width">Fornecedores</button>
-                            </a>
-                            <a href="{% url 'pagina-cadastro_fornecedor' %}">
-                                <button type="button"
-                                    class="btn btn-outline-primary active btn-block btn-fixed-width">Cadastro</button>
-                            </a>
-                        </ul>
+            <div class="col-10">
+                {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>
+                                        {{message}}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                {% endif %}
+                <form class="row g-1 mt-3 " method="POST">
+                {% csrf_token %}
+                    <div class="col-11 my-3">
+                        <label for="nome_empresa" class="form-label">Nome da Empresa</label>
+                        <input type="text" name="nome_empresa" class="form-control" placeholder="Digite o nome da empresa" maxlength="40" required>
                     </div>
-                 </div>
-                 <div class="col-10">
-                     {% if messages %}
-                                 <ul class="messages">
-                                     {% for message in messages %}
-                                         <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>
-                                             {{message}}
-                                         </li>
-                                     {% endfor %}
-                                 </ul>
-                     {% endif %}
-                     <form class="row g-1 mt-3 " method="POST">
-                        {% csrf_token %}
-                         <div class="col-11 my-3">
-                             <label for="nome_empresa" class="form-label">Nome da Empresa</label>
-                             <input type="text" name="nome_empresa" class="form-control" placeholder="Digite o nome da empresa" maxlength="40" required>
-                         </div>
-                         <div class="col-4 my-3">
-                             <label for="cnpj" class="form-label">CNPJ</label>
-                             <input type="text" name="cnpj" class="form-control" placeholder="Digite o CNPJ" maxlength="15" required>
-                         </div>
-                         <div class="col-4 my-3">
-                             <label for="ie" class="form-label">IE</label>
-                             <input type="text" name="ie" class="form-control" placeholder="Digite a IE" maxlength="15" required>
-                         </div>
-                         <div class="col-3 my-3">
-                             <label for="im" class="form-label">IM</label>
-                             <input type="text" name="im" class="form-control" placeholder="Digite a IM" maxlength="15" required>
-                         </div>
-                         <div class="col-8 my-3">
-                             <label for="endereco" class="form-label">Endereço</label>
-                             <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço" maxlength="40" required>
-                         </div>
-                         <div class="col-3 my-3">
-                             <label for="uf" class="form-label">UF</label>
-                             <input type="text" name="uf" class="form-control" maxlength="2" required>
-                         </div>
-                         <div class="col-md-8 my-3">
-                             <label for="email" class="form-label">Email</label>
-                             <input type="email" name="email" class="form-control" required>
-                         </div>
-                         <div class="col-3 my-3">
-                             <label for="telefone" class="form-label">Telefone</label>
-                             <input type="tel" name="telefone" placeholder="(xx)x-xxxx-xxxx"class="form-control" patern="([0-9]{2})[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
-                         </div>
-                         <div class="col-12 my-3 d-flex justify-content-center">
-                             <button type="submit" class="btn btn-success">Salvar</button>
-                         </div>
-                     </form>
-                 </div>
-             </div>
+                    <div class="col-4 my-3">
+                        <label for="cnpj" class="form-label">CNPJ</label>
+                        <input type="text" name="cnpj" class="form-control" placeholder="Digite o CNPJ" maxlength="15" required>
+                    </div>
+                    <div class="col-4 my-3">
+                        <label for="ie" class="form-label">IE</label>
+                        <input type="text" name="ie" class="form-control" placeholder="Digite a IE" maxlength="15" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="im" class="form-label">IM</label>
+                        <input type="text" name="im" class="form-control" placeholder="Digite a IM" maxlength="15" required>
+                    </div>
+                    <div class="col-8 my-3">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço" maxlength="40" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="uf" class="form-label">UF</label>
+                        <input type="text" name="uf" class="form-control" maxlength="2" required>
+                    </div>
+                    <div class="col-md-8 my-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="tel" name="telefone" placeholder="(xx)x-xxxx-xxxx"class="form-control" patern="([0-9]{2})[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
+                    </div>
+                    <div class="col-12 my-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-     </main>
-    
-
-    {% endblock content %}
-    
-    <footer class="p-2 bg-dark text-light text-center fixed-bottom">&copy;2024 - StockGestor Inc. All rights reserved.</footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+    </div>
+</main>
+{% endblock content %}
