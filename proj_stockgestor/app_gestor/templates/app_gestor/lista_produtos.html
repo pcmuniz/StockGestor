@@ -78,7 +78,9 @@ Produto | Lista
                     </div>
                 </form>
                 <div class="row">
+                    {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
                     <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
+                    {% endif %}
                     <table class="table table-dark table-bordered table-striped">
                         <thead>
                             <tr>
