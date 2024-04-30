@@ -16,13 +16,13 @@
             <div class="col-2"> <!-- Coluna para os botões -->
                 <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
-                        <a href="{% url 'pagina-lista_produtos' %}">
+                        <a class="mt-2 mb-2" href="{% url 'pagina-lista_produtos' %}">
                             <button type="button" class="btn btn-outline-primary btn-block">Estoque</button>
                         </a>
-                        <a href="{% url 'pagina-cadastro_produto' %}">
+                        <a class="mb-2" href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button" class="btn btn-outline-primary btn-block">Cadastro</button>
                         </a>
-                        <a href="{% url 'pagina-valor_estoque' %}">
+                        <a class="mb-2" href="{% url 'pagina-valor_estoque' %}">
                             <button type="button" class="btn btn-outline-primary active btn-block">Valor do estoque</button>
                         </a>
                     </ul>
