@@ -54,11 +54,10 @@ class RegistroView(View):
         return render(request, 'app_gestor/registro.html', {'form': form})
     
     def post(self, request):
-        if request.method == "POST":
-            form = RegistroForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect("/login")
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/login")
             
         else:
             form = RegistroForm()
@@ -70,21 +69,18 @@ class LoginView(View):
         return render(request, 'app_gestor/login.html')
     
     def post(self, request):
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            try:
-                user = CustomUser.objects.get(username=username)
-            except CustomUser.DoesNotExist:
-                user = None
-                print(user)
-            if user is not None and check_password(password, user.password):
-                return redirect('/lista_produtos')
-            else:
-                error_message = "Credenciais inválidas. Por favor, tente novamente."
-                return render(request, 'app_gestor/login.html', {'error_message': error_message})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        try:
+            user = CustomUser.objects.get(username=username)
+        except CustomUser.DoesNotExist:
+            user = None
+            print(user)
+        if user is not None and check_password(password, user.password):
+            return redirect('/produtos')
         else:
-            return render(request, 'app_gestor/login.html')
+            error_message = "Credenciais inválidas. Por favor, tente novamente."
+            return render(request, 'app_gestor/login.html', {'error_message': error_message})
 
 class ListaProdutosView(View):
     def get(self, request):
@@ -109,14 +105,13 @@ class CadastroProdutosView(View):
     def get(self, request):
         return render(request, 'app_gestor/cadastro_produto.html')
     
-    def post(self, request):
-        if request.method == "POST":
-            form = request.POST
-            produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
-                                fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
-                                quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
-            produto.save()
-            messages.info(request, 'Produto cadastrado com sucesso.')
+    def post(self, request): 
+        form = request.POST
+        produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
+                            fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
+                            quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
+        produto.save()
+        messages.info(request, 'Produto cadastrado com sucesso.')
 
         return render(request, 'app_gestor/cadastro_produto.html')
 
@@ -130,12 +125,11 @@ class CadastroFornecedorView(View):
         return render(request, 'app_gestor/cadastro_fornecedor.html')
 
     def post(self, request):
-        if request.method == "POST":
-            form = request.POST
-            fornecedor = Fornecedores(nome_empresa=form["nome_empresa"], cnpj=form["cnpj"], inscricao_estadual=form["ie"]
-                                    , inscricao_municipal=form["im"], endereco=form["endereco"], uf=form["uf"]
-                                    , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
-            fornecedor.save()
+        form = request.POST
+        fornecedor = Fornecedores(nome_empresa=form["nome_empresa"], cnpj=form["cnpj"], inscricao_estadual=form["ie"]
+                                , inscricao_municipal=form["im"], endereco=form["endereco"], uf=form["uf"]
+                                , fornecedor_email=form["email"], fornecedor_telefone=form["telefone"])
+        fornecedor.save()
 
         messages.info(request, 'Fornecedor cadastrado com sucesso.')
         
