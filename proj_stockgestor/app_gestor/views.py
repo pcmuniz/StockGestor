@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib import messages
 from django.views import View
 from django.db.models import F, FloatField, ExpressionWrapper, Sum
+from django.utils.datastructures import MultiValueDictKeyError
 
 class PaginaInicialView(View):
     def get(self, request):
@@ -96,10 +97,10 @@ class ListaProdutosView(View):
     def post(self, request):
         produtos = Produtos.objects.all()
         fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
-        if request.method == "POST":
-            # filtro = False
-            produtos = Produtos.objects.all()
+        try:
             fornecedor_escolhido = request.POST["fornecedor_escolhido"]
+        except:
+            raise MultiValueDictKeyError("Escolha outra opção!")
             
         return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores_unicos, 'fornecedor_filtro': fornecedor_escolhido})
         
