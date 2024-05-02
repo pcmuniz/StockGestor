@@ -19,7 +19,6 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <a href="https://stockgestordeploy.azurewebsites.net/" target="_blank">Acesse a aplicação</a>
 <br>
 <a href="https://www.figma.com/file/Z4RLnHZ52gVCrKk8YsjhAT/StockGestor?type=design&node-id=2410%3A5206&mode=design&t=0ag9lRPBh1nog0hL-1" target="_blank">Protótipo no Figma</a>
-<a href="https://ec2.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?atlOrigin=eyJpIjoiNTI5OTNlYzNmMWZhNDk1YTg4MTM1MjllNGIxNjIxMDMiLCJwIjoiaiJ9" target="_blank">Link do Jira</a>
 <br>
 <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
 <br>
@@ -43,7 +42,7 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <br>
 
 ## Entrega 3
-<a href="" target="_blank">ScreenCast</a>
+<img width="1319" alt="foto-board" src="https://github.com/pcmuniz/StockGestor/assets/149506953/716a3c8f-4935-49d6-b4a9-ad982589858f">
 <br>
 
 <h3>Diagrama de atividades do sistema</h3>
