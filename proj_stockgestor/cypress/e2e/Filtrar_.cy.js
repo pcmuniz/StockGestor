@@ -8,6 +8,8 @@ describe('template spec', () => {
       cy.wait(20);
       cy.get('.btn').click();
       cy.wait(20);
+      
+
 
   })
 })

@@ -8,9 +8,14 @@ describe('template spec', () => {
       cy.wait(20);
       cy.get('.btn').click();
       cy.wait(20);
-      cy.get('[href="/valor_estoque/"] > .btn').click();
+      cy.get(':nth-child(2) > .nav-link').click();
       cy.wait(20);
+      cy.get(':nth-child(3) > :nth-child(1) > a > img').click();
+      cy.wait(20);
+      
 
+
+      
 
   })
 })  
