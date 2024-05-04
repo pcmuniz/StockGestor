@@ -1,5 +1,7 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => {
+
+  it('Na lista de produtos devem aparecer apenas os produtos do forncedor escolhido pelo usuário.', () => {
+    
     cy.visit('http://127.0.0.1:8000/');
     cy.get('.login-button').click();
       cy.wait(20); 

@@ -1,5 +1,7 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('Como usuário, eu gostaria de remover fornecedores.', () => {
+
+  it('Fornecedores removidos devem desaparecer da lista de fornecedores.', () => {
+    
     cy.visit('http://127.0.0.1:8000/');
     cy.get('.login-button').click();
       cy.wait(20); 
