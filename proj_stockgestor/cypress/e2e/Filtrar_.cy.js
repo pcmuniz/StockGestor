@@ -4,12 +4,12 @@ describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => 
     
     cy.visit('http://127.0.0.1:8000/');
     cy.get('.login-button').click();
-      cy.wait(20); 
+      cy.wait(30); 
       cy.get('#username').type('cesarschool');
       cy.get('#password').type('Dj@ngo2024');
-      cy.wait(20);
+      cy.wait(30);
       cy.get('.btn').click();
-      cy.wait(20);
+      cy.wait(30);
       
 
 
