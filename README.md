@@ -22,8 +22,6 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <br>
 <a href="https://www.figma.com/file/Z4RLnHZ52gVCrKk8YsjhAT/StockGestor?type=design&node-id=2410%3A5206&mode=design&t=0ag9lRPBh1nog0hL-1" target="_blank">Protótipo no Figma</a>
 <br>
-<a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
-<br>
 <br>
 
 # Entregas
@@ -64,6 +62,9 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <a href="" target="_blank">Screencast Sprint 2</a>
   <br>
   <a href="" target="_blank">Screencast Build+Deploy</a>
+  <br>
+  <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
+  <br>
   
   
 <br>
