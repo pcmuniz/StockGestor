@@ -1,59 +1,30 @@
-<!-- TODO: chamar bases-->
-{% extends 'app_gestor/base.html' %}
-{% load static %}
-
-{% block title %}
-Produto | Lista
-{% endblock title %}
-
+{% extends 'app_gestor/base_logado.html' %}
+{% block title %}Produto | Lista{% endblock title %}
 {% block navbar %}
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="#">
-            <img src="{% static 'app_gestor/img/logo_w.png' %}" width="200" height="35">
-        </a>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2 active" href="{% url 'pagina-cadastro_produto' %}">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{% url 'pagina-cadastro_fornecedor' %}">Fornecedores</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                <!-- <img src="https://i.stack.imgur.com/KKhkr.png?s=128&g=1" alt="alguma imagem"> -->
-            </button>
-        </div>
-    </div>
-</nav>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2 active" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link mx-lg-2" href="{% url 'pagina-lista_fornecedores' %}">Fornecedores</a>
+</li>
+<li class="nav-item">
 {% endblock navbar %}
 {% block content %}
-<!-- TODO: estética da listagem-->
 <main>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="border border-dark p-3 rounded">
                     <ul class="list-group text-center">
-                        <a href="{% url 'pagina-lista_produtos' %}">
+                        <a class="mt-2 mb-2"href="{% url 'pagina-lista_produtos' %}">
                             <button type="button"
                                 class="btn btn-outline-primary active btn-block btn-fixed-width">Estoque</button>
                         </a>
-                        <a href="{% url 'pagina-cadastro_produto' %}">
+                        <a class="mb-2" href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Cadastro</button>
                         </a>
-                        <a href="{% url 'pagina-valor_estoque' %}">
+                        <a class="mb-2" href="{% url 'pagina-valor_estoque' %}">
                             <button type="button"
                                 class="btn btn-outline-primary btn-block btn-fixed-width">Valor do estoque</button>
                         </a>
@@ -61,31 +32,65 @@ Produto | Lista
                 </div>
             </div>
             <div class="col-10">
-                <table class="table table-dark table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Preço unitário</th>
-                            <!-- TODO: add restante das colunas -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for produto in produtos %}
-                        <tr>
-                            <td>{{ produto.codigo }}</td>
-                            <td>{{ produto.nome_produto }}</td>
-                            <td>{{ produto.quantidade }}</td>
-                            <td>R${{ produto.preco_compra }}</td>
-                            <!-- TODO: add restante das colunas -->
-                        </tr>
+                <form class="row row-cols-lg-auto mb-3 justify-content-center" method="POST">
+                    {% csrf_token %}
+                    <div class="col-12">
+                      <select class="form-select" name="fornecedor_escolhido">
+                        <!-- <option selected>Selecione o Fornecedor</option> -->
+                        <option selected disabled>Escolha o Fornecedor</option>
+                        <option>Todos</option>
+                        {% for fornecedor in fornecedores %}
+                        <option>{{ fornecedor.fornecedor}}</option>
                         {% endfor %}
-                    </tbody>
-                </table>
+                      </select>
+                    </div>
+                   <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </form>
+                <div class="row">
+                    {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
+                    <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
+                    {% endif %}
+                    <table class="table table-dark table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Preço unitário</th>
+                                <!-- TODO: add restante das colunas -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if filtro == 0 or fornecedor_filtro == "Todos" %}
+                            {% for produto in produtos %}
+                                    <tr>
+                                        <td>{{ produto.codigo }}</td>
+                                        <td>{{ produto.nome_produto }}</td>
+                                        <td>{{ produto.quantidade }}</td>
+                                        <td>R${{ produto.preco_compra }}</td>
+                                        <!-- TODO: add restante das colunas -->
+                                    </tr>
+                            {% endfor %}  
+                        {% else %}
+                            {% for produto in produtos %}
+                                {% if fornecedor_filtro == produto.fornecedor %}
+                                    <tr>
+                                        <td>{{ produto.codigo }}</td>
+                                        <td>{{ produto.nome_produto }}</td>
+                                        <td>{{ produto.quantidade }}</td>
+                                        <td>R${{ produto.preco_compra }}</td>
+                                        <!-- TODO: add restante das colunas -->
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %} 
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </main>
-
 {% endblock content %}
