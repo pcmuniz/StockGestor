@@ -42,18 +42,11 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <br>
 <br>
   <h3>Bug tracker</h3>
-<img width="1319" alt="bugtracker" src="https://github.com/pcmuniz/StockGestor/assets/99767869/b941ae14-b775-4313-8af5-c165ed94d6fb">
+<img width="1319" alt="bugtracker" src="">
 <br>
 </details>
 <details closed>
 <summary>Entrega 3</summary>
-  <a href="https://github.com/pcmuniz/StockGestor/assets/99767869/94e1e37d-5c20-4edd-b33a-b963eff29c7a" target="_blank">Backlog</a>
-  <br>
-  <a href="https://github.com/pcmuniz/StockGestor/assets/149506953/716a3c8f-4935-49d6-b4a9-ad982589858f" target="_blank">Quadro da Sprint</a>
-  <br>
-  <a href="https://github.com/pcmuniz/StockGestor/assets/99767869/4e7cb390-5d78-4aa1-80cb-9e4e1e61a6e1" target="_blank">Diagrama de Atividades do Sistema</a>
-<br>
-  <a href="https://github.com/pcmuniz/StockGestor/assets/99767869/2abce85d-92ba-474c-b838-e2e8bf108017" target="_blank">Bug tracker</a>
   <br>
   <a href="https://youtu.be/ceSOB3fT8TA" target="_blank">Apresentação do protótipo</a>
   <br>
@@ -65,6 +58,14 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
   <br>
+  <h3>Backlog</h3>
+  <img width="1319" alt="print-board-entrega3" src="https://github.com/pcmuniz/StockGestor/assets/149506953/716a3c8f-4935-49d6-b4a9-ad982589858f">
+  <br>
+  <h3>Diagrama de atividades do sistema</h3>
+  <img width="1319" alt="diagrama-entrega3" src="https://github.com/pcmuniz/StockGestor/assets/99767869/4e7cb390-5d78-4aa1-80cb-9e4e1e61a6e1">
+  <br>
+  <h3>Bug tracker</h3>
+  <img width="1319" alt="bugtracker-entrega3" src="https://github.com/pcmuniz/StockGestor/assets/99767869/b941ae14-b775-4313-8af5-c165ed94d6fb">
   
   
 <br>
