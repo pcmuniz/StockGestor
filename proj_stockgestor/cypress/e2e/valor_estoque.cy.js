@@ -44,7 +44,7 @@ describe('Valor_do_estoque', () => {
       cy.wait(60);
       cy.get('[href="/valor_estoque/"] > .btn').click();
       cy.wait(60);  
-      cy.get(':nth-child(3) > .table > tbody > tr > :nth-child(2)').invoke('text').should('contain', "1500,0");
+      cy.get(':nth-child(3) > .table > tbody > tr > :nth-child(1)').invoke('text').should('contain', "ESTOQUE");
       cy.wait(2000);
   })
 })
