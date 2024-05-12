@@ -40,7 +40,7 @@
                         <option selected disabled>Escolha o Fornecedor</option>
                         <option>Todos</option>
                         {% for fornecedor in fornecedores %}
-                        <option>{{ fornecedor.fornecedor}}</option>
+                        <option>{{ fornecedor.nome_empresa}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -75,7 +75,7 @@
                             {% endfor %}  
                         {% else %}
                             {% for produto in produtos %}
-                                {% if fornecedor_filtro == produto.fornecedor %}
+                                {% if fornecedor_filtro == produto.fornecedor.nome_empresa %}
                                     <tr>
                                         <td>{{ produto.codigo }}</td>
                                         <td>{{ produto.nome_produto }}</td>

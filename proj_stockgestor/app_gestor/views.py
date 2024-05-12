@@ -85,30 +85,32 @@ class LoginView(View):
 class ListaProdutosView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
-        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        fornecedores = Fornecedores.objects.all()
         filtro = False
-        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos,'fornecedores': fornecedores_unicos, 'filtro': filtro})
+        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos,'fornecedores': fornecedores, 'filtro': filtro})
     
 
     def post(self, request):
         produtos = Produtos.objects.all()
-        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        fornecedores = Fornecedores.objects.all()
         try:
             fornecedor_escolhido = request.POST["fornecedor_escolhido"]
         except:
             raise MultiValueDictKeyError("Escolha outra opção!")
             
-        return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores_unicos, 'fornecedor_filtro': fornecedor_escolhido})
+        return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores, 'fornecedor_filtro': fornecedor_escolhido})
         
 
 class CadastroProdutosView(View):
     def get(self, request):
-        return render(request, 'app_gestor/cadastro_produto.html')
+        fornecedores = Fornecedores.objects.all()
+        return render(request, 'app_gestor/cadastro_produto.html', {'fornecedores': fornecedores})
     
     def post(self, request): 
         form = request.POST
+        fornecedor_cadastrado = Fornecedores.objects.get(nome_empresa = form["fornecedor"])
         produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
-                            fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
+                            fornecedor=fornecedor_cadastrado, data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
                             quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
         produto.save()
         messages.info(request, 'Produto cadastrado com sucesso.')

@@ -69,8 +69,12 @@
                             maxlength="3" required>
                     </div>
                     <div class="col-4 my-3">
-                        <label for="fornecedor" class="form-label">Fornecedor</label>
-                        <input type="text" name="fornecedor" class="form-control" maxlength="40" required>
+                        <select class="form-select" name="fornecedor">
+                            <option selected disabled>Escolha o Fornecedor</option>
+                            {% for fornecedor in fornecedores %}
+                                <option>{{ fornecedor.nome_empresa}}</option>
+                            {% endfor %}
+                        </select> 
                     </div>
                     <div class="col-md-8 my-3">
                         <label for="data_entrada" class="form-label">Data de entrada</label>

@@ -41,8 +41,9 @@ class Fornecedores(models.Model):
     fornecedor_telefone = models.CharField(max_length = 12)
 
 class Produtos(models.Model):
+    fornecedor = models.ForeignKey(Fornecedores, on_delete=models.CASCADE)
     codigo = models.IntegerField()
-    quantidade = models.IntegerField(default=0)
+    quantidade = models.IntegerField(default=1)
     codigo_barras = models.IntegerField()
     preco_compra = models.FloatField(max_length=8)
     nome_produto = models.CharField(max_length=40)
@@ -50,7 +51,6 @@ class Produtos(models.Model):
     marca = models.CharField(max_length=15)
     categoria = models.CharField(max_length=10)
     localizacao = models.CharField(max_length=3)
-    fornecedor = models.CharField(max_length=40)
     descricao = models.CharField(max_length=100, default="Descrição")
     data_entrada = models.DateField()
     validade = models.DateField()
