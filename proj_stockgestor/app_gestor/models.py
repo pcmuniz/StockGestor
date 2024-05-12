@@ -40,6 +40,9 @@ class Fornecedores(models.Model):
     fornecedor_email = models.EmailField(max_length = 40)
     fornecedor_telefone = models.CharField(max_length = 12)
 
+    def __str__(self):
+        return self.nome_empresa
+
 class Produtos(models.Model):
     fornecedor = models.ForeignKey(Fornecedores, on_delete=models.CASCADE)
     codigo = models.IntegerField()
@@ -56,7 +59,7 @@ class Produtos(models.Model):
     validade = models.DateField()
 
     def __str__(self):
-        return "[" + str(self.id) + "] " + self.fornecedor
+        return "[" + str(self.id) + "] " + self.nome_produto
 
 
     @property
