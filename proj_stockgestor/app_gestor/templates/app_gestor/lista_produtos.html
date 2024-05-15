@@ -48,46 +48,54 @@
                       <button type="submit" class="btn btn-primary">Filtrar</button>
                     </div>
                 </form>
-                <div class="row">
-                    {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
-                    <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
-                    {% endif %}
-                    <table class="table table-dark table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Preço unitário</th>
-                                <!-- TODO: add restante das colunas -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% if filtro == 0 or fornecedor_filtro == "Todos" %}
-                            {% for produto in produtos %}
-                                    <tr>
-                                        <td>{{ produto.codigo }}</td>
-                                        <td>{{ produto.nome_produto }}</td>
-                                        <td>{{ produto.quantidade }}</td>
-                                        <td>R${{ produto.preco_compra }}</td>
-                                        <!-- TODO: add restante das colunas -->
-                                    </tr>
-                            {% endfor %}  
-                        {% else %}
-                            {% for produto in produtos %}
-                                {% if fornecedor_filtro == produto.fornecedor.nome_empresa %}
-                                    <tr>
-                                        <td>{{ produto.codigo }}</td>
-                                        <td>{{ produto.nome_produto }}</td>
-                                        <td>{{ produto.quantidade }}</td>
-                                        <td>R${{ produto.preco_compra }}</td>
-                                        <!-- TODO: add restante das colunas -->
-                                    </tr>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %} 
-                        </tbody>
-                    </table>
+                <div class="row ms-5">
+                    <div class="col-11">
+                        {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
+                        <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
+                        {% endif %}
+                        <table class="table table-dark table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço unitário</th>
+                                    <th></th>
+                                    <!-- TODO: add restante das colunas -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if filtro == 0 or fornecedor_filtro == "Todos" %}
+                                {% for produto in produtos %}
+                                        <tr>
+                                            <td>{{ produto.codigo }}</td>
+                                            <td>{{ produto.nome_produto }}</td>
+                                            <td>{{ produto.quantidade }}</td>
+                                            <td>R${{ produto.preco_compra }}</td>
+                                            <td>
+                                                <a class="btn btn-primary">Visualizar</a>
+                                                <a class="btn btn-success">Editar</a>
+                                                <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
+                                            </td>
+                                            <!-- TODO: add restante das colunas -->
+                                        </tr>
+                                {% endfor %}  
+                            {% else %}
+                                {% for produto in produtos %}
+                                    {% if fornecedor_filtro == produto.fornecedor.nome_empresa %}
+                                        <tr>
+                                            <td>{{ produto.codigo }}</td>
+                                            <td>{{ produto.nome_produto }}</td>
+                                            <td>{{ produto.quantidade }}</td>
+                                            <td>R${{ produto.preco_compra }}</td>
+                                            <!-- TODO: add restante das colunas -->
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %} 
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
