@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.shortcuts import redirect, render
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
@@ -138,22 +138,15 @@ class CadastroFornecedorView(View):
         
         return render(request, 'app_gestor/cadastro_fornecedor.html')
 
-# class DeletaFornecedorView(View):
-#     def post(request,id):
-#         fornecedores = get_object_or_404(Fornecedores, pk=id)
-#         fornecedores.delete()
-#         return redirect('app_gestor/lista_fornecedores.html')
+class DeletarFornecedor(View):
+    def get(self,request, fornecedor_id):
+        fornecedor = Fornecedores.objects.get(id = fornecedor_id)
+        fornecedor.delete()
+        messages.info(request, 'Fornecedor deletado com sucesso.')
+        return redirect('pagina-lista_fornecedores')
     
-def deletaFornecedor(request,id):
-    fornecedores = get_object_or_404(Fornecedores, pk=id)
-    fornecedores.delete()
-
-    messages.info(request, 'Fornecedor deletado com sucesso.')
-
-    return render(request, 'app_gestor/lista_fornecedores.html')
-
 class DeletarProduto(View):
-    def get(self, produto_id):
+    def get(self, request, produto_id):
         produto = Produtos.objects.get(id = produto_id)
         produto.delete()
         return redirect('pagina-lista_produtos')

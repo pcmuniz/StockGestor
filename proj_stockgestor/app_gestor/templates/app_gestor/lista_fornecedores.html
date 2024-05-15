@@ -26,6 +26,7 @@
                             <th>Nome</th>
                             <th>CNPJ</th>
                             <th>Endereço</th>
+                            <th></th>
                         </tr>
                     </thead>
                     {% if messages %}
@@ -40,14 +41,10 @@
                     <tbody>
                         {% for fornecedor in fornecedores %}
                         <tr>
-                            <td>
-                                <a href="{% url 'deleta-fornecedor' fornecedor.id %}">
-                                    <img src="{% static 'app_gestor/img/pngwing.com.png' %}" width="25" height="25">
-                                </a>
-                                {{ fornecedor.nome_empresa }}
-                            </td>
+                            <td>{{ fornecedor.nome_empresa }}</td>
                             <td>{{ fornecedor.cnpj }}</td>
                             <td>{{ fornecedor.endereco }}</td>
+                            <td><a href="{% url 'deletar-fornecedor' fornecedor.id %}" class="btn btn-danger">Deletar</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
