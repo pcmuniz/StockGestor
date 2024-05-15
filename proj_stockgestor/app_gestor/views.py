@@ -108,6 +108,7 @@ class CadastroProdutosView(View):
         return render(request, 'app_gestor/cadastro_produto.html', {'fornecedores': fornecedores})
     
     def post(self, request): 
+        fornecedores = Fornecedores.objects.all()
         form = request.POST
         fornecedor_cadastrado = Fornecedores.objects.get(nome_empresa = form["fornecedor"])
         produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
@@ -116,7 +117,7 @@ class CadastroProdutosView(View):
         produto.save()
         messages.info(request, 'Produto cadastrado com sucesso.')
 
-        return render(request, 'app_gestor/cadastro_produto.html')
+        return render(request, 'app_gestor/cadastro_produto.html', {'fornecedores': fornecedores})
 
 class ListaFornecedoresView(View):
     def get(self, request):
@@ -151,7 +152,7 @@ class DeletarProduto(View):
         produto.delete()
         return redirect('pagina-lista_produtos')
 
-
-
-
-
+class DetalhesProduto(View):
+    def get(self, request, produto_id):
+        produto = Produtos.objects.get(id=produto_id)
+        return render(request, 'app_gestor/produto_detalhes.html', {'produto': produto})
