@@ -73,12 +73,66 @@
                                             <td>{{ produto.quantidade }}</td>
                                             <td>R${{ produto.preco_compra }}</td>
                                             <td>
-                                                <a href="{% url 'detalhes-produto' produto.id %}" class="btn btn-primary">Visualizar</a>
+                                                <!-- <a href="{% url 'detalhes-produto' produto.id %}" class="btn btn-primary">Visualizar</a> -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                    Visualizar
+                                                </button>
                                                 <a class="btn btn-success">Editar</a>
                                                 <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
                                             </td>
                                             <!-- TODO: add restante das colunas -->
                                         </tr>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">{{ produto.nome_produto }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Detalhes do Produto</h5>
+                                                                    <p class="card-text"><strong>Marca:</strong> {{ produto.marca }}</p>
+                                                                    <p class="card-text"><strong>Categoria:</strong> {{ produto.categoria }}</p>
+                                                                    <p class="card-text"><strong>Fornecedor:</strong> {{ produto.fornecedor }}</p>
+                                                                    <p class="card-text"><strong>Localização:</strong> {{ produto.localizacao }}</p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <p class="card-text"><strong>Validade:</strong> {{ produto.validade }}</p>
+                                                                    <p class="card-text"><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+                                                                    <p class="card-text"><strong>Preço de Compra:</strong> {{ produto.preco_compra }}</p>
+                                                                    <p class="card-text"><strong>Referência:</strong> {{ produto.ref }}</p>
+                                                                    <p class="card-text"><strong>Código de Barras:</strong> {{ produto.codigo_barras }}</p>
+                                                                    <p class="card-text"><strong>Código:</strong> {{ produto.codigo }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-3">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Descrição do Produto</h5>
+                                                                    <p class="card-text">{{ produto.descricao }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                 {% endfor %}  
                             {% else %}
                                 {% for produto in produtos %}
