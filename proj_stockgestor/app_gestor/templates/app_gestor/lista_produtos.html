@@ -73,7 +73,6 @@
                                             <td>{{ produto.quantidade }}</td>
                                             <td>R${{ produto.preco_compra }}</td>
                                             <td>
-                                                <!-- <a href="{% url 'detalhes-produto' produto.id %}" class="btn btn-primary">Visualizar</a> -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                                     Visualizar
                                                 </button>
@@ -143,7 +142,6 @@
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                                     Visualizar
                                                 </button>
-                                                <!-- <a href="{% url 'detalhes-produto' produto.id %}" class="btn btn-primary">Visualizar</a> -->
                                                 <a class="btn btn-success">Editar</a>
                                                 <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
                                             </td>
