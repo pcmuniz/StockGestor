@@ -155,6 +155,7 @@ class DeletarProduto(View):
     def get(self, request, produto_id):
         produto = Produtos.objects.get(id = produto_id)
         produto.delete()
+        messages.info(request, 'Produto deletado com sucesso.')
         return redirect('pagina-lista_produtos')
 
 class EditarProduto(View):
