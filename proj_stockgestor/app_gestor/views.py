@@ -151,6 +151,11 @@ class DeletarProduto(View):
         produto = Produtos.objects.get(id = produto_id)
         produto.delete()
         return redirect('pagina-lista_produtos')
+    
+class AlertaProdutos(View):
+    def get(self, request):
+        produto = Produtos.objects.all()
+        return render(request, 'app_gestor/pagina_alertas.html', {'produto': produto})
 
 # class DetalhesProduto(View):
 #     def get(self, request, produto_id):
