@@ -76,7 +76,6 @@
                                         <tr class="table-default">
                                             <td>{{ produto.codigo }}</td>
                                     {% endif %}
-                                            <td>{{ produto.codigo }}</td>
                                             <td>{{ produto.nome_produto }}</td>
                                             <td>{{ produto.quantidade }}</td>
                                             <td>R${{ produto.preco_compra }}</td>
@@ -84,7 +83,7 @@
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                                     Visualizar
                                                 </button>
-                                                <a class="btn btn-success">Editar</a>
+                                                <a href="{% url 'editar-produto' produto.id %}" class="btn btn-success">Editar</a>
                                                 <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
                                             </td>
                                         </tr>

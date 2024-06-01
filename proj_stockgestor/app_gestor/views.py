@@ -1,4 +1,5 @@
-from django.shortcuts import redirect, render
+from urllib import request
+from django.shortcuts import get_object_or_404, redirect, render
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
 from django.contrib.auth.hashers import check_password
@@ -23,10 +24,15 @@ class PaginaSobreView(View):
 class PaginaContatoView(View):
     def get(self, request):
         return render(request, 'app_gestor/contato.html')
+
+class PaginaEditarProduto(View):
+    def get(self, request):
+        return render(request, 'app_gestor/editar_produto.html')
     
 class ValorEstoqueView(View):
     def get(self, request):
         return render(request, 'app_gestor/valor_estoque.html')
+    
 
 class ValorEstoqueView(View):
     def get(self, request):
@@ -49,7 +55,6 @@ class ValorEstoqueView(View):
 
 
 class RegistroView(View):
-    # TDDO: criar login()
     def get(self, request):
         form = RegistroForm()
         return render(request, 'app_gestor/registro.html', {'form': form})
@@ -151,13 +156,31 @@ class DeletarProduto(View):
         produto = Produtos.objects.get(id = produto_id)
         produto.delete()
         return redirect('pagina-lista_produtos')
-    
-class AlertaProdutos(View):
-    def get(self, request):
-        produto = Produtos.objects.all()
-        return render(request, 'app_gestor/pagina_alertas.html', {'produto': produto})
 
-# class DetalhesProduto(View):
-#     def get(self, request, produto_id):
-#         produto = Produtos.objects.get(id=produto_id)
-#         return render(request, 'app_gestor/produto_detalhes.html', {'produto': produto})
+class EditarProduto(View):
+    def get(self, request, id):
+        produto = get_object_or_404(Produtos, id=id)
+        
+        context = {'produto': produto}
+        
+        return render(request, 'app_gestor/editar_produto.html', context)
+    
+    def post(self, request, id):
+        produto = get_object_or_404(Produtos, id = id)
+        
+        produto.nome_produto = request.POST.get('nome_produto')
+        produto.ref = request.POST.get('ref')
+        produto.marca = request.POST.get('marca')
+        produto.categoria = request.POST.get('categoria')
+        produto.localizacao = request.POST.get('localizacao')
+        produto.validade = request.POST.get('validade')
+        produto.codigo = request.POST.get('codigo')
+        produto.quantidade = request.POST.get('quantidade')
+        produto.quantidade_alerta = request.POST.get('quantidade_alerta')
+        produto.codigo_barras = request.POST.get('codigo_barras')
+        produto.preco_compra = request.POST.get('preco_compra')
+        produto.descricao = request.POST.get('descricao')
+
+        produto.save()
+
+        return redirect('pagina-lista_produtos')
