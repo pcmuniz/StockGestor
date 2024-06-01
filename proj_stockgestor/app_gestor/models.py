@@ -50,6 +50,7 @@ class Produtos(models.Model):
     fornecedor = models.ForeignKey(Fornecedores, on_delete=models.CASCADE)
     codigo = models.IntegerField()
     quantidade = models.IntegerField(default=1)
+    quantidade_alerta = models.IntegerField(default=1)
     codigo_barras = models.IntegerField()
     preco_compra = models.FloatField(max_length=8)
     nome_produto = models.CharField(max_length=40)

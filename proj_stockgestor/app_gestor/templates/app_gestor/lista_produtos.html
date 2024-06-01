@@ -1,6 +1,8 @@
 {% extends 'app_gestor/base_logado.html' %}
+{% load static %}
 {% block title %}Produto | Lista{% endblock title %}
 {% block navbar %}
+
 <li class="nav-item">
     <a class="nav-link mx-lg-2 active" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
 </li>
@@ -36,7 +38,6 @@
                     {% csrf_token %}
                     <div class="col-12">
                       <select class="form-select" name="fornecedor_escolhido">
-                        <!-- <option selected>Selecione o Fornecedor</option> -->
                         <option selected disabled>Escolha o Fornecedor</option>
                         <option>Todos</option>
                         {% for fornecedor in fornecedores %}
@@ -61,13 +62,20 @@
                                     <th>Quantidade</th>
                                     <th>Preço unitário</th>
                                     <th></th>
-                                    <!-- TODO: add restante das colunas -->
                                 </tr>
                             </thead>
                             <tbody>
                             {% if filtro == 0 or fornecedor_filtro == "Todos" %}
                                 {% for produto in produtos %}
-                                        <tr>
+                                    {% if produto.quantidade_alerta >= produto.quantidade %}
+                                        <tr class="table-danger">
+                                            <td>
+                                                <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com baixo estoque!">
+                                                {{ produto.codigo }}</td>                                             
+                                    {% else %}
+                                        <tr class="table-default">
+                                            <td>{{ produto.codigo }}</td>
+                                    {% endif %}
                                             <td>{{ produto.codigo }}</td>
                                             <td>{{ produto.nome_produto }}</td>
                                             <td>{{ produto.quantidade }}</td>
@@ -79,7 +87,6 @@
                                                 <a class="btn btn-success">Editar</a>
                                                 <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
                                             </td>
-                                            <!-- TODO: add restante das colunas -->
                                         </tr>
                                         <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">

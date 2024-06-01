@@ -113,7 +113,7 @@ class CadastroProdutosView(View):
         fornecedor_cadastrado = Fornecedores.objects.get(nome_empresa = form["fornecedor"])
         produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
                             fornecedor=fornecedor_cadastrado, data_entrada=timezone.now(), validade=form["validade"], codigo=form["codigo"],
-                            quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
+                            quantidade=form["quantidade"], quantidade_alerta=form["quantidade_alerta"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
         produto.save()
         messages.info(request, 'Produto cadastrado com sucesso.')
 

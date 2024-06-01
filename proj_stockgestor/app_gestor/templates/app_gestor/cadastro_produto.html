@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-3 my-3">
                         <label for="fornecedor" class="form-label">Fornecedor</label>
-                        <select class="form-select" name="fornecedor">
+                        <select class="form-select" name="fornecedor" required>
                             <option selected disabled>Escolha o Fornecedor</option>
                             {% for fornecedor in fornecedores %}
                                 <option>{{ fornecedor.nome_empresa}}</option>
@@ -92,6 +92,10 @@
                     <div class="col-3 my-3">
                         <label for="quantidade" class="form-label">Quantidade</label>
                         <input type="text" name="quantidade" class="form-control" maxlength="4" required>
+                    </div> 
+                    <div class="col-3 my-3">
+                        <label for="quantidade_alerta" class="form-label">Quantidade - Alerta de baixo estoque</label>
+                        <input type="number" name="quantidade_alerta" class="form-control" maxlength="3" required>
                     </div> 
                     <div class="col-3 my-3">
                         <label for="preco_compra" class="form-label">Preço de compra</label>
