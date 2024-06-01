@@ -2,15 +2,15 @@
 {% block title %}Produto | Editar{% endblock title %}
 {% block active %}{% endblock active %}
 
-{% block nome_produto %}produto.nome_produto{% endblock nome_produto %}
-{% block ref %}produto.ref{% endblock ref %}
-{% block marca %}produto.marca{% endblock marca %}
-{% block categoria %}produto.categoria{% endblock categoria %}
-{% block codigo_barras %}produto.codigo_barras{% endblock codigo_barras %}
-{% block validade %}produto.validade{% endblock validade %}
+{% block nome_produto %}{{ produto.nome_produto }}{% endblock nome_produto %}
+{% block ref %}{{ produto.ref }}{% endblock ref %}
+{% block marca %}{{ produto.marca }}{% endblock marca %}
+{% block categoria %}{{ produto.categoria }}{% endblock categoria %}
+{% block codigo_barras %}{{ produto.codigo_barras }}{% endblock codigo_barras %}
+{% block validade %}{{ produto.validade }}{% endblock validade %}
 {% block fornecedor %}{% endblock fornecedor %}
-{% block codigo %}produto.codigo{% endblock codigo %}
-{% block localizacao %}produto.localizacao{% endblock localizacao %}
-{% block quantidade %}produto.quantidade{% endblock quantidade %}
-{% block quantidade_alerta %}produto.quantidade_alerta{% endblock quantidade_alerta %}
-{% block preco_compra %}produto.preco_compra{% endblock preco_compra %}
+{% block codigo %}{{ produto.codigo }}{% endblock codigo %}
+{% block localizacao %}{{ produto.localizacao }}{% endblock localizacao %}
+{% block quantidade %}{{ produto.quantidade }}{% endblock quantidade %}
+{% block quantidade_alerta %}{{ produto.quantidade_alerta }}{% endblock quantidade_alerta %}
+{% block preco_compra %}{{ produto.preco_compra }}{% endblock preco_compra %}
