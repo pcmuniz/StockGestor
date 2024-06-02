@@ -33,7 +33,11 @@ class ValorEstoqueView(View):
     def get(self, request):
         return render(request, 'app_gestor/valor_estoque.html')
     
-
+class AlertaProdutos(View):
+    def get(self, request):
+        produto = Produtos.objects.all()
+        return render(request, 'app_gestor/pagina_alertas.html', {'produto': produto})
+    
 class ValorEstoqueView(View):
     def get(self, request):
         produtos = Produtos.objects.all()

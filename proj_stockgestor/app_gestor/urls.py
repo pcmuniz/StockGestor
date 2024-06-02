@@ -12,6 +12,7 @@ urlpatterns=[
     path('produtos/', views.ListaProdutosView.as_view(), name='pagina-lista_produtos'),
     path('cadastro_produto/', views.CadastroProdutosView.as_view(), name='pagina-cadastro_produto'),
     path('fornecedores/', views.ListaFornecedoresView.as_view(), name='pagina-lista_fornecedores'),
+    path('alerta/', views.AlertaProdutos.as_view(), name='pagina-alerta'),
     path('cadastro_fornecedor/', views.CadastroFornecedorView.as_view(), name='pagina-cadastro_fornecedor'),
     path('valor_estoque/', views.ValorEstoqueView.as_view(), name='pagina-valor_estoque'),
     path('deletar_fornecedor/<int:fornecedor_id>', views.DeletarFornecedor.as_view(),name='deletar-fornecedor'),
