@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
@@ -6,6 +7,7 @@ from django.contrib import messages
 from django.views import View
 from django.db.models import F, FloatField, ExpressionWrapper, Sum
 from django.utils.datastructures import MultiValueDictKeyError
+from django.utils import timezone
 
 class PaginaInicialView(View):
     def get(self, request):
@@ -22,11 +24,20 @@ class PaginaSobreView(View):
 class PaginaContatoView(View):
     def get(self, request):
         return render(request, 'app_gestor/contato.html')
+
+class PaginaEditarProduto(View):
+    def get(self, request):
+        return render(request, 'app_gestor/editar_produto.html')
     
 class ValorEstoqueView(View):
     def get(self, request):
         return render(request, 'app_gestor/valor_estoque.html')
-
+    
+class AlertaProdutos(View):
+    def get(self, request):
+        produto = Produtos.objects.all()
+        return render(request, 'app_gestor/pagina_alertas.html', {'produto': produto})
+    
 class ValorEstoqueView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
@@ -48,7 +59,6 @@ class ValorEstoqueView(View):
 
 
 class RegistroView(View):
-    # TDDO: criar login()
     def get(self, request):
         form = RegistroForm()
         return render(request, 'app_gestor/registro.html', {'form': form})
@@ -85,35 +95,38 @@ class LoginView(View):
 class ListaProdutosView(View):
     def get(self, request):
         produtos = Produtos.objects.all()
-        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        fornecedores = Fornecedores.objects.all()
         filtro = False
-        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos,'fornecedores': fornecedores_unicos, 'filtro': filtro})
+        return render(request, 'app_gestor/lista_produtos.html', {'produtos': produtos,'fornecedores': fornecedores, 'filtro': filtro})
     
 
     def post(self, request):
         produtos = Produtos.objects.all()
-        fornecedores_unicos = Produtos.objects.values("fornecedor").distinct()
+        fornecedores = Fornecedores.objects.all()
         try:
             fornecedor_escolhido = request.POST["fornecedor_escolhido"]
         except:
             raise MultiValueDictKeyError("Escolha outra opção!")
             
-        return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores_unicos, 'fornecedor_filtro': fornecedor_escolhido})
+        return render(request, 'app_gestor/lista_produtos.html',{'produtos': produtos, 'fornecedores': fornecedores, 'fornecedor_filtro': fornecedor_escolhido})
         
 
 class CadastroProdutosView(View):
     def get(self, request):
-        return render(request, 'app_gestor/cadastro_produto.html')
+        fornecedores = Fornecedores.objects.all()
+        return render(request, 'app_gestor/cadastro_produto.html', {'fornecedores': fornecedores})
     
     def post(self, request): 
+        fornecedores = Fornecedores.objects.all()
         form = request.POST
+        fornecedor_cadastrado = Fornecedores.objects.get(nome_empresa = form["fornecedor"])
         produto = Produtos(nome_produto=form["nome_produto"], ref=form["ref"], marca=form["marca"], categoria=form["categoria"], localizacao=form["localizacao"],
-                            fornecedor=form["fornecedor"], data_entrada=form["data_entrada"], validade=form["validade"], codigo=form["codigo"],
-                            quantidade=form["quantidade"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
+                            fornecedor=fornecedor_cadastrado, data_entrada=timezone.now(), validade=form["validade"], codigo=form["codigo"],
+                            quantidade=form["quantidade"], quantidade_alerta=form["quantidade_alerta"], codigo_barras=form["codigo_barras"], preco_compra=form["preco_compra"], descricao=form["descricao"])
         produto.save()
         messages.info(request, 'Produto cadastrado com sucesso.')
 
-        return render(request, 'app_gestor/cadastro_produto.html')
+        return render(request, 'app_gestor/cadastro_produto.html', {'fornecedores': fornecedores})
 
 class ListaFornecedoresView(View):
     def get(self, request):
@@ -135,22 +148,44 @@ class CadastroFornecedorView(View):
         
         return render(request, 'app_gestor/cadastro_fornecedor.html')
 
-# class DeletaFornecedorView(View):
-#     def post(request,id):
-#         fornecedores = get_object_or_404(Fornecedores, pk=id)
-#         fornecedores.delete()
-#         return redirect('app_gestor/lista_fornecedores.html')
+class DeletarFornecedor(View):
+    def get(self,request, fornecedor_id):
+        fornecedor = Fornecedores.objects.get(id = fornecedor_id)
+        fornecedor.delete()
+        messages.info(request, 'Fornecedor deletado com sucesso.')
+        return redirect('pagina-lista_fornecedores')
     
-def deletaFornecedor(request,id):
-    fornecedores = get_object_or_404(Fornecedores, pk=id)
-    fornecedores.delete()
+class DeletarProduto(View):
+    def get(self, request, produto_id):
+        produto = Produtos.objects.get(id = produto_id)
+        produto.delete()
+        messages.info(request, 'Produto deletado com sucesso.')
+        return redirect('pagina-lista_produtos')
 
-    messages.info(request, 'Fornecedor deletado com sucesso.')
+class EditarProduto(View):
+    def get(self, request, id):
+        produto = get_object_or_404(Produtos, id=id)
+        
+        context = {'produto': produto}
+        
+        return render(request, 'app_gestor/editar_produto.html', context)
+    
+    def post(self, request, id):
+        produto = get_object_or_404(Produtos, id = id)
+        
+        produto.nome_produto = request.POST.get('nome_produto')
+        produto.ref = request.POST.get('ref')
+        produto.marca = request.POST.get('marca')
+        produto.categoria = request.POST.get('categoria')
+        produto.localizacao = request.POST.get('localizacao')
+        produto.validade = request.POST.get('validade')
+        produto.codigo = request.POST.get('codigo')
+        produto.quantidade = request.POST.get('quantidade')
+        produto.quantidade_alerta = request.POST.get('quantidade_alerta')
+        produto.codigo_barras = request.POST.get('codigo_barras')
+        produto.preco_compra = request.POST.get('preco_compra')
+        produto.descricao = request.POST.get('descricao')
 
-    return render(request, 'app_gestor/lista_fornecedores.html')
+        produto.save()
 
-
-
-
-
-
+        return redirect('pagina-lista_produtos')

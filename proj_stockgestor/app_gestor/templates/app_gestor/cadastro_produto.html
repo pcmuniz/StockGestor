@@ -22,7 +22,7 @@
                         </a>
                         <a class="mb-2" href="{% url 'pagina-cadastro_produto' %}">
                             <button type="button"
-                                class="btn btn-outline-primary active btn-block btn-fixed-width">Cadastro</button>
+                                class="btn btn-outline-primary {% block active %}active{% endblock active %} btn-block btn-fixed-width">Cadastro</button>
                         </a>
                         <a class="mb-2" href="{% url 'pagina-valor_estoque' %}">
                             <button type="button"
@@ -46,59 +46,66 @@
                     <div class="col-12 my-3">
                         <label for="nome_produto" class="form-label">Nome do produto</label>
                         <input type="text" name="nome_produto" class="form-control"
-                            placeholder="Digite o nome do produto" maxlength="40" required>
+                            placeholder="Digite o nome do produto" maxlength="40" value="{% block nome_produto %}{% endblock nome_produto %}" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="ref" class="form-label">Referência</label>
                         <input type="text" name="ref" class="form-control" placeholder="Digite a referência"
-                            maxlength="15" required>
+                            maxlength="15" value="{% block ref %}{% endblock ref %}" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="marca" class="form-label">Marca</label>
                         <input type="text" name="marca" class="form-control" placeholder="Digite a marca" maxlength="15"
-                            required>
+                         value="{% block marca %}{% endblock marca %}" required>
                     </div>
                     <div class="col-4 my-3">
                         <label for="categoria" class="form-label">Categoria</label>
                         <input type="text" name="categoria" class="form-control" placeholder="Digite a categoria"
-                            maxlength="15" required>
+                            maxlength="15" value="{% block categoria %}{% endblock categoria %}" required>
                     </div>
-                    <div class="col-8 my-3">
+                    <div class="col-6 my-3">
+                        <label for="codigo_barras" class="form-label">Código de barras</label>
+                        <input type="number" name="codigo_barras" class="form-control" maxlength="13" value="{% block codigo_barras %}{% endblock codigo_barras %}" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="validade" class="form-label">Validade</label>
+                        <input type="date" name="validade" class="form-control" value="{% block validade %}{% endblock validade %}" required>
+                    </div>
+                    {% block fornecedor %}
+                    <div class="col-3 my-3">
+                        <label for="fornecedor" class="form-label">Fornecedor</label>
+                        <select class="form-select" name="fornecedor" required>
+                            <option selected disabled>Escolha o Fornecedor</option>
+                            {% for fornecedor in fornecedores %}
+                                <option>{{ fornecedor.nome_empresa}}</option>
+                            {% endfor %}
+                        </select> 
+                    </div>
+                    {% endblock fornecedor %}
+                    <div class="col-3 my-3">
+                        <label for="codigo" class="form-label">Código</label>
+                        <input type="number" name="codigo" class="form-control" maxlength="8" value="{% block codigo %}{% endblock codigo %}" required>
+                    </div>
+                    <div class="col-3 my-3">
                         <label for="localizacao" class="form-label">Localização</label>
                         <input type="text" name="localizacao" class="form-control" placeholder="Digite a localização"
-                            maxlength="3" required>
+                            maxlength="3" value="{% block localizacao %}{% endblock localizacao %}" required>
                     </div>
-                    <div class="col-4 my-3">
-                        <label for="fornecedor" class="form-label">Fornecedor</label>
-                        <input type="text" name="fornecedor" class="form-control" maxlength="40" required>
-                    </div>
-                    <div class="col-md-8 my-3">
-                        <label for="data_entrada" class="form-label">Data de entrada</label>
-                        <input type="date" name="data_entrada" class="form-control" required>
-                    </div>
-                    <div class="col-4 my-3">
-                        <label for="validade" class="form-label">Validade</label>
-                        <input type="date" name="validade" class="form-control" required>
-                    </div>
-                    <div class="col-4 my-3">
-                        <label for="codigo" class="form-label">Código</label>
-                        <input type="text" name="codigo" class="form-control" maxlength="8" required>
-                    </div>
-                    <div class="col-4 my-3">
+                    <div class="col-3 my-3">
                         <label for="quantidade" class="form-label">Quantidade</label>
-                        <input type="text" name="quantidade" class="form-control" maxlength="4" required>
-                    </div>
-                    <div class="col-4 my-3">
-                        <label for="codigo_barras" class="form-label">Código de barras</label>
-                        <input type="text" name="codigo_barras" class="form-control" maxlength="13" required>
-                    </div>
-                    <div class="col-4 my-3">
+                        <input type="number" name="quantidade" class="form-control" maxlength="4" value="{% block quantidade %}{% endblock quantidade %}" required>
+                    </div> 
+                    <div class="col-3 my-3">
+                        <label for="quantidade_alerta" class="form-label">Quantidade - Alerta de baixo estoque</label>
+                        <input type="number" name="quantidade_alerta" class="form-control" maxlength="3" value="{% block quantidade_alerta %}{% endblock quantidade_alerta %}" required>
+                    </div> 
+                    <div class="col-3 my-3">
                         <label for="preco_compra" class="form-label">Preço de compra</label>
-                        <input type="text" name="preco_compra" class="form-control" maxlength="8" required>
+                        <input type="number" step="0.01" name="preco_compra" class="form-control" maxlength="8" value="{% block preco_compra %}{% endblock preco_compra %}" required>
                     </div>
-                    <div class="col-4 my-3">
+                    <div class="col-6 my-3 ms-auto me-auto">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <input type="text" name="descricao" class="form-control" maxlength="100" required>
+                        <textarea class="form-control" name="descricao" rows="3" maxlength="100"></textarea>
                     </div>
                     <div class="col-12 my-3 d-flex justify-content-center">
                         <a href="{% url 'pagina-lista_produtos' %}">

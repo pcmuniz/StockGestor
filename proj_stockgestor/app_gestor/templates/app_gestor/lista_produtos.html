@@ -1,6 +1,8 @@
 {% extends 'app_gestor/base_logado.html' %}
+{% load static %}
 {% block title %}Produto | Lista{% endblock title %}
 {% block navbar %}
+
 <li class="nav-item">
     <a class="nav-link mx-lg-2 active" aria-current="page" href="{% url 'pagina-lista_produtos' %}">Produtos</a>
 </li>
@@ -36,11 +38,10 @@
                     {% csrf_token %}
                     <div class="col-12">
                       <select class="form-select" name="fornecedor_escolhido">
-                        <!-- <option selected>Selecione o Fornecedor</option> -->
                         <option selected disabled>Escolha o Fornecedor</option>
                         <option>Todos</option>
                         {% for fornecedor in fornecedores %}
-                        <option>{{ fornecedor.fornecedor}}</option>
+                        <option>{{ fornecedor.nome_empresa}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -48,46 +49,164 @@
                       <button type="submit" class="btn btn-primary">Filtrar</button>
                     </div>
                 </form>
-                <div class="row">
-                    {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
-                    <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
-                    {% endif %}
-                    <table class="table table-dark table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Preço unitário</th>
-                                <!-- TODO: add restante das colunas -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% if filtro == 0 or fornecedor_filtro == "Todos" %}
-                            {% for produto in produtos %}
-                                    <tr>
-                                        <td>{{ produto.codigo }}</td>
-                                        <td>{{ produto.nome_produto }}</td>
-                                        <td>{{ produto.quantidade }}</td>
-                                        <td>R${{ produto.preco_compra }}</td>
-                                        <!-- TODO: add restante das colunas -->
-                                    </tr>
-                            {% endfor %}  
-                        {% else %}
-                            {% for produto in produtos %}
-                                {% if fornecedor_filtro == produto.fornecedor %}
-                                    <tr>
-                                        <td>{{ produto.codigo }}</td>
-                                        <td>{{ produto.nome_produto }}</td>
-                                        <td>{{ produto.quantidade }}</td>
-                                        <td>R${{ produto.preco_compra }}</td>
-                                        <!-- TODO: add restante das colunas -->
-                                    </tr>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %} 
-                        </tbody>
-                    </table>
+                <div class="row ms-5">
+                    <div class="col-11">
+                        {% if filtro != 0 and fornecedor_filtro != "Todos"%}  
+                        <h3>Fornecedor: {{ fornecedor_filtro}}</h3>
+                        {% endif %}
+                        <table class="table table-dark table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço unitário</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if filtro == 0 or fornecedor_filtro == "Todos" %}
+                                {% for produto in produtos %}
+                                    {% if produto.quantidade_alerta >= produto.quantidade %}
+                                        <tr class="table-danger">
+                                            <td>
+                                                <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com baixo estoque!">
+                                                {{ produto.codigo }}</td>                                             
+                                    {% else %}
+                                        <tr class="table-default">
+                                            <td>{{ produto.codigo }}</td>
+                                    {% endif %}
+                                            <td>{{ produto.nome_produto }}</td>
+                                            <td>{{ produto.quantidade }}</td>
+                                            <td>R${{ produto.preco_compra }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                    Visualizar
+                                                </button>
+                                                <a href="{% url 'editar-produto' produto.id %}" class="btn btn-success">Editar</a>
+                                                <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
+                                            </td>
+                                        </tr>
+                                        <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">{{ produto.nome_produto }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Detalhes do Produto</h5>
+                                                                    <p class="card-text"><strong>Marca:</strong> {{ produto.marca }}</p>
+                                                                    <p class="card-text"><strong>Categoria:</strong> {{ produto.categoria }}</p>
+                                                                    <p class="card-text"><strong>Fornecedor:</strong> {{ produto.fornecedor }}</p>
+                                                                    <p class="card-text"><strong>Localização:</strong> {{ produto.localizacao }}</p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <p class="card-text"><strong>Validade:</strong> {{ produto.validade }}</p>
+                                                                    <p class="card-text"><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+                                                                    <p class="card-text"><strong>Preço de Compra:</strong> {{ produto.preco_compra }}</p>
+                                                                    <p class="card-text"><strong>Referência:</strong> {{ produto.ref }}</p>
+                                                                    <p class="card-text"><strong>Código de Barras:</strong> {{ produto.codigo_barras }}</p>
+                                                                    <p class="card-text"><strong>Código:</strong> {{ produto.codigo }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-3">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Descrição do Produto</h5>
+                                                                    <p class="card-text">{{ produto.descricao }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                {% endfor %}  
+                            {% else %}
+                                {% for produto in produtos %}
+                                    {% if fornecedor_filtro == produto.fornecedor.nome_empresa %}
+                                        <tr>
+                                            <td>{{ produto.codigo }}</td>
+                                            <td>{{ produto.nome_produto }}</td>
+                                            <td>{{ produto.quantidade }}</td>
+                                            <td>R${{ produto.preco_compra }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                    Visualizar
+                                                </button>
+                                                <a class="btn btn-success">Editar</a>
+                                                <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
+                                            </td>
+                                            <!-- TODO: add restante das colunas -->
+                                        </tr>
+                                        <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">{{ produto.nome_produto }}</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Detalhes do Produto</h5>
+                                                                    <p class="card-text"><strong>Marca:</strong> {{ produto.marca }}</p>
+                                                                    <p class="card-text"><strong>Categoria:</strong> {{ produto.categoria }}</p>
+                                                                    <p class="card-text"><strong>Fornecedor:</strong> {{ produto.fornecedor }}</p>
+                                                                    <p class="card-text"><strong>Localização:</strong> {{ produto.localizacao }}</p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <p class="card-text"><strong>Validade:</strong> {{ produto.validade }}</p>
+                                                                    <p class="card-text"><strong>Quantidade:</strong> {{ produto.quantidade }}</p>
+                                                                    <p class="card-text"><strong>Preço de Compra:</strong> {{ produto.preco_compra }}</p>
+                                                                    <p class="card-text"><strong>Referência:</strong> {{ produto.ref }}</p>
+                                                                    <p class="card-text"><strong>Código de Barras:</strong> {{ produto.codigo_barras }}</p>
+                                                                    <p class="card-text"><strong>Código:</strong> {{ produto.codigo }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-3">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Descrição do Produto</h5>
+                                                                    <p class="card-text">{{ produto.descricao }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %} 
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
