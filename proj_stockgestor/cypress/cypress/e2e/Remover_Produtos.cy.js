@@ -10,7 +10,7 @@ describe('Valor_do_estoque', () => {
       cy.get('#password').type('Dj@ngo2024');
       cy.wait(60);
       cy.get('.btn').click();
-      cy.wait(1000);
+      cy.wait(3000);
       cy.get('[href="/cadastro_produto/"] > .btn').click();
       cy.wait(60);
       cy.get(':nth-child(2) > .form-control').type('AirJordam');
@@ -51,29 +51,11 @@ describe('Valor_do_estoque', () => {
      cy.get('.mt-2 > .btn').click();
      cy.wait(3000);
 
-     
-
-
-
-     
-
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
       cy.get(':nth-child(2) > :nth-child(5) > .btn-danger').click();
       cy.wait(500);
+
+      cy.get('thead > tr > :nth-child(1)').should('not.contain', '2 diferents AirJordam registered');
+      
 
   })
 })
