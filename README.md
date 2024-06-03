@@ -56,7 +56,7 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://youtu.be/Wu7pXU_bDHg" target="_blank">Execução dos testes automatizados</a>
   <br>
-  <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 2</a>
+  <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 3</a>
   <br>
   <a href="https://youtube.com/watch?v=G89_gjB2FSM&si=BM14c2MknMuxOnBr" target="_blank">Screencast Build+Deploy</a>
   <br>
@@ -83,7 +83,7 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="#" target="_blank">Execução dos testes automatizados</a>
   <br>
-  <a href="#" target="_blank">Screencast Sprint 2</a>
+  <a href="#" target="_blank">Screencast Sprint 4</a>
   <br>
   <a href="#" target="_blank">Screencast Build+Deploy</a>
   <br>
