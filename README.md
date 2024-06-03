@@ -75,6 +75,23 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 
 <summary>Entrega 4</summary>
 <br>
+<a href="#" target="_blank">Apresentação do protótipo</a>
+  <br>
+    <a href="#" target="_blank">Build e Deploy</a>
+  <br>
+    <a href="#" target="_blank">Uso do sistema</a>
+  <br>
+  <a href="#" target="_blank">Execução dos testes automatizados</a>
+  <br>
+  <a href="#" target="_blank">Screencast Sprint 2</a>
+  <br>
+  <a href="#" target="_blank">Screencast Build+Deploy</a>
+  <br>
+  <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
+  <br>
+<h3>Backlog</h3>
+  <img width="1319" alt="print-board-entrega4" src="https://github.com/pcmuniz/StockGestor/assets/149506953/589dca65-972a-402f-9d6c-c2be4c3126ca">
+  <br>
 
 </details>
 
