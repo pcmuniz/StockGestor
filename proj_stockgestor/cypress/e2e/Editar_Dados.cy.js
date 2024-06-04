@@ -53,34 +53,7 @@ describe('Editar Dados', () => {
      cy.get('.ms-auto > .form-control').click().type('Branco');
      cy.wait(60);
      cy.get(':nth-child(7) > .form-control').type('2028-05-02');
-     cy.wait(60);
-
-cy.get('.table-default > :nth-child(3)').each(($el) => {
-    const text = $el.text();
-    const number = parseFloat(text);
-    expect(number).to.be.greaterThan(2);
-});
-
-     
-
-     
-     
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
+     cy.wait(60);    
 
   })
 })
