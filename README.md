@@ -81,6 +81,9 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
   <br>
+  <a href="https://www.canva.com/design/DAGG-wT6htI/ITI988Lb422j40xgsz4ZFA/view?utm_content=DAGG-wT6htI&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="-blank">Slides Apresentação Projetos</a>
+  <br>
+  
 <h3>Backlog</h3>
   <img width="1319" alt="print-board-entrega4" src="https://github.com/pcmuniz/StockGestor/assets/149506953/589dca65-972a-402f-9d6c-c2be4c3126ca">
   <br>
