@@ -44,8 +44,6 @@ describe('Editar Dados', () => {
      cy.wait(60);
      cy.get('.ms-auto > .form-control').type('Branco');
      cy.wait(60);
-     cy.scrollTo('bottom');  
-     cy.wait(60);
      cy.get('.d-flex > a > .btn').click({ force: true });
      cy.wait(2000);
      cy.get('.mt-2 > .btn').click();
@@ -63,7 +61,6 @@ describe('Editar Dados', () => {
 
      cy.get('.d-flex > a > .btn').scrollIntoView().click({ force: true });
 
-// Adiciona a asserção para verificar se cy.get('thead > tr > :nth-child(3)') possui apenas números maiores que 2
 cy.get('.table-default > :nth-child(3)').each(($el) => {
     const text = $el.text();
     const number = parseFloat(text);
