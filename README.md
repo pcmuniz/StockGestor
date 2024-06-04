@@ -75,7 +75,7 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <details open>
 <summary>Entrega 4</summary>
 <br>
-<a href="#" target="_blank">Apresentação do protótipo</a>
+<a href="https://youtu.be/jpySDMfy9y4" target="_blank">Apresentação do protótipo</a>
   <br>
     <a href="#" target="_blank">Build e Deploy</a>
   <br>
