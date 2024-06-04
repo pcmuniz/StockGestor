@@ -43,8 +43,6 @@ describe('Editar Dados', () => {
      cy.get(':nth-child(13) > .form-control').type('700');
      cy.wait(60);
      cy.get('.ms-auto > .form-control').type('Branco');
-     cy.wait(60);
-     cy.get('.d-flex > a > .btn').click({ force: true });
      cy.wait(2000);
      cy.get('.mt-2 > .btn').click();
      cy.wait(3000);
