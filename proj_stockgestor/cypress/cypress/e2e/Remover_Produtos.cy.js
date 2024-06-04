@@ -56,6 +56,7 @@ describe('Valor_do_estoque', () => {
 
       cy.get('thead > tr > :nth-child(1)').should('not.contain', '2 diferents AirJordam registered');
       
+      
 
   })
 })
