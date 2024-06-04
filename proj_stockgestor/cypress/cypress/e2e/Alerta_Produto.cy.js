@@ -45,8 +45,6 @@ describe('Alerta de produto', () => {
      cy.wait(60);
      cy.get('.ms-auto > .form-control').type('Branco');
      cy.wait(60);
-     cy.scrollTo('bottom');  
-     cy.wait(60);
      cy.get('.d-flex > a > .btn').click({ force: true });
      cy.wait(2000);
      cy.get('.mt-2 > .btn').click();
