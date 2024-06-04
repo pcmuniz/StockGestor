@@ -1,4 +1,4 @@
-describe('Valor_do_estoque', () => {
+describe('Remover Produtos', () => {
 
   it('Como usuário, eu gostaria de remover produtos, após remover deverão desaparecer da lista', () => {
 

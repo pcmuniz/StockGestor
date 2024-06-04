@@ -1,6 +1,6 @@
-describe('Valor_do_estoque', () => {
+describe('Visualizar Detalhes', () => {
 
-  it('Como usuário, eu gostaria de remover produtos, após remover deverão desaparecer da lista', () => {
+  it('Como usuário, gostaria de visualizar as informações cadastradas de um produto cadastrado', () => {
 
       cy.visit('http://127.0.0.1:8000/');
       cy.wait(60);

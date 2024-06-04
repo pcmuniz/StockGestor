@@ -19,7 +19,6 @@ describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => 
     cy.wait(100);
     cy.get(':nth-child(5) > .form-control').click().type('celular');
     cy.wait(100);
-    cy.get('.col-8 > .form-control').click().click().type('A3');
     cy.wait(100);
     cy.get(':nth-child(7) > .form-control').click().type('Apple Inc');
     cy.wait(100);
@@ -53,8 +52,6 @@ describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => 
     cy.wait(100);
     cy.get(':nth-child(5) > .form-control').click().type('celular');
     cy.wait(100);
-    cy.get('.col-8 > .form-control').click().click().type('A4');
-    cy.wait(100);
     cy.get(':nth-child(7) > .form-control').click().type('Apple Inc');
     cy.wait(100);
     cy.get('.col-md-8 > .form-control').click().type('2024-05-02');
@@ -86,8 +83,6 @@ describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => 
     cy.get(':nth-child(4) > .form-control').click().type('Sansung Inc');
     cy.wait(100);
     cy.get(':nth-child(5) > .form-control').click().type('celular');
-    cy.wait(100);
-    cy.get('.col-8 > .form-control').click().click().type('A3');
     cy.wait(100);
     cy.get(':nth-child(7) > .form-control').click().type('Samsung Inc');
     cy.wait(100);
@@ -121,8 +116,6 @@ describe('Como usuário, eu gostaria de filtrar produtos por fornecedor', () => 
     cy.get(':nth-child(4) > .form-control').click().type('Xiaomi Inc');
     cy.wait(100);
     cy.get(':nth-child(5) > .form-control').click().type('celular');
-    cy.wait(100);
-    cy.get('.col-8 > .form-control').click().click().type('A3');
     cy.wait(100);
     cy.get(':nth-child(7) > .form-control').click().type('Xiaomi Inc');
     cy.wait(100);

@@ -1,6 +1,6 @@
 describe('Valor_do_estoque', () => {
 
-  it('O usuário incluiu um produto na lista de produtos cadastrados.', () => {
+  it('Viasualizar o somatório total do valor dos produtos cadastrados.', () => {
 
       cy.visit('http://127.0.0.1:8000/');
       cy.wait(60);
@@ -23,11 +23,10 @@ describe('Valor_do_estoque', () => {
       cy.wait(60);
       cy.get(':nth-child(5) > .form-control').type('acessórios');
       cy.wait(60);
-      cy.get('.col-8 > .form-control').type('A3');
-      cy.wait(60);
       cy.get(':nth-child(7) > .form-control').type('Apple');
       cy.wait(60);
       cy.get('.col-md-8 > .form-control').type('2024-05-02');
+      cy.wait(60);
       cy.get(':nth-child(9) > .form-control').type('2030-05-02');
       cy.wait(60);
       cy.get(':nth-child(10) > .form-control').type('321');

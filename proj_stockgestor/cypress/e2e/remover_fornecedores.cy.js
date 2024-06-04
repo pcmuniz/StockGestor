@@ -18,8 +18,6 @@ describe('Como usuário, eu gostaria de remover fornecedores.', () => {
     cy.wait(1000);
     cy.get('.col-11 > .form-control').click().type('Apple Inc');
     cy.wait(100);
-    cy.get(':nth-child(3) > .form-control').click().type('12326700');
-    cy.wait(100);
     cy.get(':nth-child(4) > .form-control').click().type('1345577');
     cy.wait(100);
     cy.get(':nth-child(5) > .form-control').click().type('145435');
