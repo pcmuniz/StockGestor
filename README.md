@@ -50,13 +50,9 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://youtu.be/ceSOB3fT8TA" target="_blank">Apresentação do protótipo</a>
   <br>
-    <a href="https://youtu.be/G89_gjB2FSM?si=VXZ9ron3Bls6dPxz" target="_blank">Build e Deploy</a>
-  <br>
-    <a href="https://youtu.be/2CrjfHPL4iw?si=uefqOZ6dvYF-DfaH" target="_blank">Uso do sistema</a>
-  <br>
   <a href="https://youtu.be/Wu7pXU_bDHg" target="_blank">Execução dos testes automatizados</a>
   <br>
-  <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 3</a>
+  <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 2</a>
   <br>
   <a href="https://youtube.com/watch?v=G89_gjB2FSM&si=BM14c2MknMuxOnBr" target="_blank">Screencast Build+Deploy</a>
   <br>
@@ -75,15 +71,11 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
 <details open>
 <summary>Entrega 4</summary>
 <br>
-<a href="#" target="_blank">Apresentação do protótipo</a>
-  <br>
-    <a href="#" target="_blank">Build e Deploy</a>
-  <br>
-    <a href="#" target="_blank">Uso do sistema</a>
+<a href="https://youtu.be/jpySDMfy9y4" target="_blank">Apresentação do protótipo</a>
   <br>
   <a href="#" target="_blank">Execução dos testes automatizados</a>
   <br>
-  <a href="#" target="_blank">Screencast Sprint 4</a>
+  <a href="#" target="_blank">Screencast Sprint 3</a>
   <br>
   <a href="#" target="_blank">Screencast Build+Deploy</a>
   <br>
