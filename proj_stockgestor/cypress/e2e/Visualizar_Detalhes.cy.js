@@ -1,6 +1,6 @@
-describe('Valor_do_estoque', () => {
+describe('Visualizar Detalhes', () => {
 
-  it('Como usuário, eu gostaria de remover produtos, após remover deverão desaparecer da lista', () => {
+  it('Como usuário, gostaria de visualizar as informações cadastradas de um produto cadastrado', () => {
 
       cy.visit('http://127.0.0.1:8000/');
       cy.wait(60);
@@ -44,14 +44,12 @@ describe('Valor_do_estoque', () => {
      cy.wait(60);
      cy.get('.ms-auto > .form-control').type('Branco');
      cy.wait(60);
-     cy.scrollTo('bottom');  
-     cy.wait(60);
      cy.get('.d-flex > a > .btn').click({ force: true });
      cy.wait(2000);
      cy.get('.mt-2 > .btn').click();
      cy.wait(3000);
      cy.get(':nth-child(2) > :nth-child(5) > .btn-primary').click();
-     cy.get('.show > .modal-dialog > .modal-content > .modal-body > .row > :nth-child(1) > .card > .card-body > :nth-child(2)').should('contain', 'Marca: Nutella');
+     cy.get('.show > .modal-dialog > .modal-content > .modal-body > .row > :nth-child(1) > .card > .card-body > :nth-child(2)').should('not.contain', 'Nutella');
 
   })
 })

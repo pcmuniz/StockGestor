@@ -1,4 +1,4 @@
-describe('Valor_do_estoque', () => {
+describe('Remover Produtos', () => {
 
   it('Como usuário, eu gostaria de remover produtos, após remover deverão desaparecer da lista', () => {
 
@@ -44,8 +44,6 @@ describe('Valor_do_estoque', () => {
      cy.wait(60);
      cy.get('.ms-auto > .form-control').type('Branco');
      cy.wait(60);
-     cy.scrollTo('bottom');  
-     cy.wait(60);
      cy.get('.d-flex > a > .btn').click({ force: true });
      cy.wait(2000);
      cy.get('.mt-2 > .btn').click();
@@ -55,6 +53,7 @@ describe('Valor_do_estoque', () => {
       cy.wait(500);
 
       cy.get('thead > tr > :nth-child(1)').should('not.contain', '2 diferents AirJordam registered');
+      
       
 
   })

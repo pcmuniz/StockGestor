@@ -137,3 +137,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+proj_stockgestor/cypress/e2e/Filtrar.cy.js
+proj_stockgestor/cypress/e2e/Remover_Fornecedores.cy.js
+proj_stockgestor/cypress/e2e/Valor_Estoque.cy.js

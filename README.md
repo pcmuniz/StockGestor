@@ -50,10 +50,6 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://youtu.be/ceSOB3fT8TA" target="_blank">Apresentação do protótipo</a>
   <br>
-    <a href="https://youtu.be/G89_gjB2FSM?si=VXZ9ron3Bls6dPxz" target="_blank">Build e Deploy</a>
-  <br>
-    <a href="https://youtu.be/2CrjfHPL4iw?si=uefqOZ6dvYF-DfaH" target="_blank">Uso do sistema</a>
-  <br>
   <a href="https://youtu.be/Wu7pXU_bDHg" target="_blank">Execução dos testes automatizados</a>
   <br>
   <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 2</a>
@@ -70,31 +66,34 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <h3>Bug tracker</h3>
   <img width="1319" alt="bugtracker-entrega3" src="https://github.com/pcmuniz/StockGestor/assets/99767869/b941ae14-b775-4313-8af5-c165ed94d6fb">
-  
 <br>
-
+</details>
+<details open>
 <summary>Entrega 4</summary>
 <br>
-<a href="#" target="_blank">Apresentação do protótipo</a>
+<a href="https://youtu.be/jpySDMfy9y4" target="_blank">Apresentação do protótipo</a>
   <br>
-    <a href="#" target="_blank">Build e Deploy</a>
+  <a href="https://youtu.be/Nn0nsmDCwZU" target="_blank">Execução dos testes automatizados</a>
   <br>
-    <a href="#" target="_blank">Uso do sistema</a>
-  <br>
-  <a href="#" target="_blank">Execução dos testes automatizados</a>
-  <br>
-  <a href="#" target="_blank">Screencast Sprint 2</a>
+  <a href="#" target="_blank">Screencast Sprint 3</a>
   <br>
   <a href="#" target="_blank">Screencast Build+Deploy</a>
   <br>
   <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
   <br>
+  <a href="https://www.canva.com/design/DAGG-wT6htI/ITI988Lb422j40xgsz4ZFA/view?utm_content=DAGG-wT6htI&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="-blank">Slides Apresentação Projetos</a>
+  <br>
+  
 <h3>Backlog</h3>
   <img width="1319" alt="print-board-entrega4" src="https://github.com/pcmuniz/StockGestor/assets/149506953/589dca65-972a-402f-9d6c-c2be4c3126ca">
   <br>
-
+  <h3>Diagrama de atividades do sistema</h3>
+  <img width="1319" alt="diagrama-entrega4" src="https://github.com/pcmuniz/StockGestor/assets/149506953/9369712b-74b0-4a3d-814e-bb5338e70ba6">
+  <br>
+  <h3>Bug tracker</h3>
+  <img width="1319" alt="bugtracker-entrega4" src="https://github.com/pcmuniz/StockGestor/assets/149506953/55aafba5-021f-469a-8a2a-f0400d0b9a52">
+<br>
 </details>
-
 
 
 ## Equipe
