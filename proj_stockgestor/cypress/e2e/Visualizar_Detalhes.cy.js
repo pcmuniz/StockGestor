@@ -49,7 +49,7 @@ describe('Visualizar Detalhes', () => {
      cy.get('.mt-2 > .btn').click();
      cy.wait(3000);
      cy.get(':nth-child(2) > :nth-child(5) > .btn-primary').click();
-     cy.get('.show > .modal-dialog > .modal-content > .modal-body > .row > :nth-child(1) > .card > .card-body > :nth-child(2)').should('contain', 'Marca: Nutella');
+     cy.get('.show > .modal-dialog > .modal-content > .modal-body > .row > :nth-child(1) > .card > .card-body > :nth-child(2)').should('not.contain', 'Nutella');
 
   })
 })

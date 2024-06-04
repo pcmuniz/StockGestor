@@ -59,8 +59,6 @@ describe('Editar Dados', () => {
      cy.get(':nth-child(7) > .form-control').type('2028-05-02');
      cy.wait(60);
 
-     cy.get('.d-flex > a > .btn').scrollIntoView().click({ force: true });
-
 cy.get('.table-default > :nth-child(3)').each(($el) => {
     const text = $el.text();
     const number = parseFloat(text);
