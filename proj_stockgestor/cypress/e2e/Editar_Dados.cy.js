@@ -15,8 +15,6 @@ describe('Editar Dados', () => {
       cy.wait(60);
       cy.get(':nth-child(2) > .form-control').type('AirJordam');
       cy.wait(60);
-      cy.get(':nth-child(3) > .form-control').type('Air1');
-      cy.wait(60);
       cy.get(':nth-child(4) > .form-control').type('Nike Inc');
       cy.wait(60);
       cy.get(':nth-child(5) > .form-control').type('Tênis');
