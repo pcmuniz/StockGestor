@@ -4,7 +4,7 @@
 StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequenas e médias empresas a organizar e monitorar seus produtos de forma eficiente. Com uma interface intuitiva e recursos poderosos, StockGestor facilita o acompanhamento do estoque, a gestão de produtos e a análise de dados de vendas.
 
 # Funcionalidades
-- <b>Cadastro de Produtos</b>: Adicionar informações detalhadas dos produtos
+- <b>Cadastro de Produtos</b>: Adicionar informações detalhadas dos produtos.
 - <b>Controle de Estoque</b>: Monitorar as quantidades de estoque em tempo real.
 - <b>Gestão de Fornecedores</b>: Manter um registro de fornecedores e suas informações de contato.
 - <b>Relatórios</b>: Gerar relatórios de informações sobre de estoque e fornecedores.
