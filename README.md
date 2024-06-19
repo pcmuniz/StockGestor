@@ -4,7 +4,7 @@
 StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequenas e médias empresas a organizar e monitorar seus produtos de forma eficiente. Com uma interface intuitiva e recursos poderosos, StockGestor facilita o acompanhamento do estoque, a gestão de produtos e a análise de dados de vendas.
 
 # Funcionalidades
-- <b>Cadastro de Produtos</b>: Adicionar informações detalhadas dos produtos
+- <b>Cadastro de Produtos</b>: Adicionar informações detalhadas dos produtos.
 - <b>Controle de Estoque</b>: Monitorar as quantidades de estoque em tempo real.
 - <b>Gestão de Fornecedores</b>: Manter um registro de fornecedores e suas informações de contato.
 - <b>Relatórios</b>: Gerar relatórios de informações sobre de estoque e fornecedores.
@@ -75,9 +75,9 @@ StockGestor é um sistema de gerenciamento de estoque projetado para ajudar pequ
   <br>
   <a href="https://youtu.be/Nn0nsmDCwZU" target="_blank">Execução dos testes automatizados</a>
   <br>
-  <a href="#" target="_blank">Screencast Sprint 3</a>
+  <a href="https://youtube.com/watch?v=2CrjfHPL4iw&si=1LjEDdu8Szc0hICZ" target="_blank">Screencast Sprint 3</a>
   <br>
-  <a href="#" target="_blank">Screencast Build+Deploy</a>
+  <a href="https://youtu.be/uZEHAnMONK4" target="_blank">Screencast Build+Deploy</a>
   <br>
   <a href="https://docs.google.com/document/d/1yrLjQc_eE59DkDJZQxy_8cr5r-paJxQkEI2Bhud5pec/edit?usp=sharing" target="_blank">Relatório da programação em pares</a>
   <br>
