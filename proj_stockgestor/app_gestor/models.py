@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
-import datetime
+from datetime import date
 from django.utils import timezone
 
 
@@ -65,10 +65,14 @@ class Produtos(models.Model):
     def __str__(self):
         return "[" + str(self.id) + "] " + self.nome_produto
     
-    def prazo_validade(self):
-        # perto_validade = self.validade - datetime.date.today()
-        # return perto_validade
-        return self.validade <= datetime.date.today() + datetime.timedelta(days = 90)         
+    # def vencimento(self):
+    #     hoje = date.today()
+    #     return(self.validade - self.data_entrada).days
+
+    def vencimento(self):
+        diferenca = self.validade - self.data_entrada
+        dias_diferenca = diferenca.days
+        return dias_diferenca
 
 
     @property

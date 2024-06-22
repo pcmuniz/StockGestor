@@ -61,32 +61,44 @@
                                     <th>Produto</th>
                                     <th>Quantidade</th>
                                     <th>Preço unitário</th>
+                                    <th>Validade</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                             {% if filtro == 0 or fornecedor_filtro == "Todos" %}
                                 {% for produto in produtos %}
+                                <tr class="table-default">
+                                    <td>{{ produto.codigo }}</td>
+                                    <td>{{ produto.nome_produto }}</td>
+
+
                                     {% if produto.quantidade_alerta >= produto.quantidade %}
-                                        <tr class="table-danger">
-                                            <td>
-                                                <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com baixo estoque!">
-                                                {{ produto.codigo }}</td>                                             
+                                        <td class="table-danger">
+                                            <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com baixo estoque!">
+                                            {{ produto.quantidade }}
+                                        </td>  
                                     {% else %}
-                                        <tr class="table-default">
-                                            <td>{{ produto.codigo }}</td>
+                                        <td class="table-default">{{ produto.quantidade }}</td>
                                     {% endif %}
-                                            <td>{{ produto.nome_produto }}</td>
-                                            <td>{{ produto.quantidade }}</td>
-                                            <td>R${{ produto.preco_compra }}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                    Visualizar
-                                                </button>
-                                                <a href="{% url 'editar-produto' produto.id %}" class="btn btn-success">Editar</a>
-                                                <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
-                                            </td>
-                                        </tr>
+                                        <td>R${{ produto.preco_compra }}</td>
+
+                                    {% if produto.vencimento <= 15 %}
+                                        <td class="table-danger">
+                                            <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com vencimento em {{ produto.vencimento }} dias!">
+                                            {{ produto.vencimento }}
+                                        </td>  
+                                    {% else %}
+                                        <td class="table-default">{{ produto.vencimento }}</td>
+                                    {% endif %}
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                Visualizar
+                                            </button>
+                                            <a href="{% url 'editar-produto' produto.id %}" class="btn btn-success">Editar</a>
+                                            <a href="{% url 'deletar-produto' produto.id %}" class="btn btn-danger">Deletar</a>
+                                        </td>
+                                </tr>
                                         <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                               <div class="modal-content">
