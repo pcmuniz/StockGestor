@@ -41,7 +41,7 @@ class Fornecedores(models.Model):
     endereco = models.CharField(max_length = 40, default="NULL")
     uf = models.CharField(max_length = 2, default="NULL")
     fornecedor_email = models.EmailField(max_length = 40)
-    fornecedor_telefone = models.CharField(max_length = 12)
+    fornecedor_telefone = models.CharField(max_length = 15)
 
     def __str__(self):
         return self.nome_empresa

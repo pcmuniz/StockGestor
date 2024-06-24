@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-3 my-3">
                         <label for="fornecedor_telefone" class="form-label">Telefone</label>
-                        <input type="tel" name="fornecedor_telefone" placeholder="(xx)x-xxxx-xxxx" class="form-control" pattern="(\([0-9]{2}\))?[0-9]{1}-[0-9]{4}-[0-9]{4}" value="{{ fornecedor.fornecedor_telefone }}" required>
+                        <input type="tel" name="fornecedor_telefone" placeholder="(xx)x-xxxx-xxxx" class="form-control" pattern="(\([0-9]{2}\))?[0-9]{1}-[0-9]{4}-[0-9]{4}" maxlength="15" value="{{ fornecedor.fornecedor_telefone }}" required>
                     </div>
                     <div class="col-12 my-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-success">Salvar</button>
