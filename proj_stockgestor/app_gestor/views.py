@@ -1,9 +1,9 @@
 from urllib import request
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render # type: ignore
 from .forms import RegistroForm
 from .models import CustomUser, Fornecedores, Produtos
-from django.contrib.auth.hashers import check_password
-from django.contrib import messages
+from django.contrib.auth.hashers import check_password # type: ignore
+from django.contrib import messages # type: ignore
 from django.views import View
 from django.db.models import F, FloatField, ExpressionWrapper, Sum
 from django.utils.datastructures import MultiValueDictKeyError
@@ -153,6 +153,28 @@ class DeletarFornecedor(View):
         fornecedor = Fornecedores.objects.get(id = fornecedor_id)
         fornecedor.delete()
         messages.info(request, 'Fornecedor deletado com sucesso.')
+        return redirect('pagina-lista_fornecedores')
+    
+class EditarFornecedor(View):
+    def get(self, request, id):
+        fornecedor = get_object_or_404(Fornecedores, id=id)
+        context = {'fornecedor': fornecedor}
+        return render(request, 'app_gestor/editar_fornecedor.html', context)
+    
+    def post(self, request, id):
+        fornecedor = get_object_or_404(Fornecedores, id=id)
+        fornecedor.nome_empresa = request.POST.get('nome_empresa')
+        fornecedor.cnpj = request.POST.get('cnpj')
+        fornecedor.inscricao_estadual = request.POST.get('inscricao_estadual')
+        fornecedor.inscricao_municipal = request.POST.get('inscricao_municipal')
+        fornecedor.endereco = request.POST.get('endereco')
+        fornecedor.uf = request.POST.get('uf')
+        fornecedor.fornecedor_email = request.POST.get('fornecedor_email')
+        fornecedor.fornecedor_telefone = request.POST.get('fornecedor_telefone')
+
+        fornecedor.save()
+
+        messages.success(request, 'Fornecedor atualizado com sucesso.')
         return redirect('pagina-lista_fornecedores')
     
 class DeletarProduto(View):
