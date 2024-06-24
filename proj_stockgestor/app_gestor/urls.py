@@ -13,6 +13,7 @@ urlpatterns=[
     path('cadastro_produto/', views.CadastroProdutosView.as_view(), name='pagina-cadastro_produto'),
     path('fornecedores/', views.ListaFornecedoresView.as_view(), name='pagina-lista_fornecedores'),
     path('cadastro_fornecedor/', views.CadastroFornecedorView.as_view(), name='pagina-cadastro_fornecedor'),
+    path('editar_fornecedor/<int:id>', views.EditarFornecedor.as_view(), name='editar-fornecedor'),
     path('valor_estoque/', views.ValorEstoqueView.as_view(), name='pagina-valor_estoque'),
     path('deletar_fornecedor/<int:fornecedor_id>', views.DeletarFornecedor.as_view(),name='deletar-fornecedor'),
     path('deletar_produto/<int:produto_id>', views.DeletarProduto.as_view(), name='deletar-produto'),

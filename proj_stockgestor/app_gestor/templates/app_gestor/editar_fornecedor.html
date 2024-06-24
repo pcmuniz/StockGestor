@@ -1,0 +1,70 @@
+{% extends 'app_gestor/base_logado.html' %}
+{% block title %}Fornecedor | Editar{% endblock title %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="border border-dark p-3 rounded">
+                    <ul class="list-group text-center">
+                        <a class="mt-2 mb-2" href="{% url 'pagina-lista_fornecedores' %}">
+                            <button type="button" class="btn btn-outline-primary active btn-block btn-fixed-width">Fornecedores</button>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-10">
+                <h2>Editar Fornecedor</h2>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <form class="row g-1 mt-3" method="POST">
+                    {% csrf_token %}
+                    <div class="col-11 my-3">
+                        <label for="nome_empresa" class="form-label">Nome da Empresa</label>
+                        <input type="text" name="nome_empresa" class="form-control" placeholder="Digite o nome da empresa" maxlength="40" value="{{ fornecedor.nome_empresa }}" required>
+                    </div>
+                    <div class="col-4 my-3">
+                        <label for="cnpj" class="form-label">CNPJ</label>
+                        <input type="text" name="cnpj" class="form-control" placeholder="Digite o CNPJ" maxlength="15" value="{{ fornecedor.cnpj }}" required>
+                    </div>
+                    <div class="col-4 my-3">
+                        <label for="inscricao_estadual" class="form-label">Inscrição Estadual (IE)</label>
+                        <input type="text" name="inscricao_estadual" class="form-control" placeholder="Digite a IE" maxlength="15" value="{{ fornecedor.inscricao_estadual }}">
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="inscricao_municipal" class="form-label">Inscrição Municipal (IM)</label>
+                        <input type="text" name="inscricao_municipal" class="form-control" placeholder="Digite a IM" maxlength="15" value="{{ fornecedor.inscricao_municipal }}">
+                    </div>
+                    <div class="col-8 my-3">
+                        <label for="endereco" class="form-label">Endereço</label>
+                        <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço" maxlength="40" value="{{ fornecedor.endereco }}" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="uf" class="form-label">UF</label>
+                        <input type="text" name="uf" class="form-control" maxlength="2" value="{{ fornecedor.uf }}" required>
+                    </div>
+                    <div class="col-md-8 my-3">
+                        <label for="fornecedor_email" class="form-label">Email</label>
+                        <input type="email" name="fornecedor_email" class="form-control" value="{{ fornecedor.fornecedor_email }}" required>
+                    </div>
+                    <div class="col-3 my-3">
+                        <label for="fornecedor_telefone" class="form-label">Telefone</label>
+                        <input type="tel" name="fornecedor_telefone" placeholder="(xx)x-xxxx-xxxx" class="form-control" pattern="(\([0-9]{2}\))?[0-9]{1}-[0-9]{4}-[0-9]{4}" value="{{ fornecedor.fornecedor_telefone }}" required>
+                    </div>
+                    <div class="col-12 my-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
