@@ -64,10 +64,6 @@ class Produtos(models.Model):
 
     def __str__(self):
         return "[" + str(self.id) + "] " + self.nome_produto
-    
-    # def vencimento(self):
-    #     hoje = date.today()
-    #     return(self.validade - self.data_entrada).days
 
     def vencimento(self):
         diferenca = self.validade - self.data_entrada

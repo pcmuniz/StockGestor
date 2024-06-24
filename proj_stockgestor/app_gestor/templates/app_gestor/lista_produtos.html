@@ -86,10 +86,10 @@
                                     {% if produto.vencimento <= 15 %}
                                         <td class="table-danger">
                                             <img src="{% static 'app_gestor/img/alert-icon.png' %}" alt="Ícone de alerta" width="30" height="30" data-toggle="tooltip" data-placement="right" title="Produto com vencimento em {{ produto.vencimento }} dias!">
-                                            {{ produto.vencimento }}
+                                            {{ produto.validade }}
                                         </td>  
                                     {% else %}
-                                        <td class="table-default">{{ produto.vencimento }}</td>
+                                        <td class="table-default">{{ produto.validade }}</td>
                                     {% endif %}
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
